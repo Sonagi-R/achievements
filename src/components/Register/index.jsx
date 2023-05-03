@@ -1,7 +1,10 @@
 import React from "react";
 import './index.css'
+import { user } from "../../context";
 
 export default function Register() {
+  const { username, setUsername, email, setEmail, password, setPassword } = user();
+
   const usernameHandler = (e) => {
     setUsername(e.target.value);
   };
