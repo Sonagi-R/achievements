@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { screen, render, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
+import { UserProvider } from "../../context";
 expect.extend(matchers);
 import Register from "./index";
 import { BrowserRouter } from "react-router-dom";

@@ -1,20 +1,15 @@
 import React from "react";
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const jestEnvironment = require("jest-environment-jsdom");
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { screen, render, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import matchers from "@testing-library/jest-dom/matchers";
+import { UserProvider } from "../../context";
 expect.extend(matchers);
 import Register from "./index";
 import { BrowserRouter } from "react-router-dom";
 
 describe("register page", () => {
   beforeEach(() => {
-    const dom = new JSDOM("<!DOCTYPE html>");
-    global.document = dom.window.document;
-    global.window = dom.window;
 
     render(
       <UserProvider>
@@ -34,7 +29,7 @@ describe("register page", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it("renders Register header", () => {
+  it("renders Login header", () => {
     const heading = screen.getByRole("heading", { name: /Login/i });
     expect(heading).toBeInTheDocument();
   });
