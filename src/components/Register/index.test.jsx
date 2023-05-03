@@ -10,9 +10,11 @@ import { BrowserRouter } from "react-router-dom";
 describe("register page", () => {
   beforeEach(() => {
     render(
-          <BrowserRouter>
-            <Register />
-          </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      </UserProvider>
     );
   });
 

@@ -11,15 +11,17 @@ import Register from "./index";
 import { BrowserRouter } from "react-router-dom";
 
 describe("register page", () => {
-    beforeEach(() => {
-        const dom = new JSDOM("<!DOCTYPE html>");
-        global.document = dom.window.document;
-        global.window = dom.window;
+  beforeEach(() => {
+    const dom = new JSDOM("<!DOCTYPE html>");
+    global.document = dom.window.document;
+    global.window = dom.window;
 
     render(
-          <BrowserRouter>
-            <Register />
-          </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <Register />
+        </BrowserRouter>
+      </UserProvider>
     );
   });
 
