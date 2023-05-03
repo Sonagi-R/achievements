@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components";
 import "./App.css";
 import * as Pages from "./pages";
-import Nav from "./layout/nav";
 
 function App() {
   return (
