@@ -1,0 +1,21 @@
+
+
+.form-entry{
+    display: block;
+  margin-bottom: 1rem;
+  width: 480px;
+  padding-left: 20px;
+  height: 6dvh;
+  border-radius: 99999px;
+  background-color: #E4E4E4;
+  color: black;
+}
+
+.form-entry::placeholder{
+    color: black;
+}
+
+.form-submit{
+    background-color: #449495;
+    color: white;
+}
