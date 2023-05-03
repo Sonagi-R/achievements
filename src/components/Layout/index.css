@@ -2,6 +2,11 @@
     color: black;
 }
 
+nav{
+    position: relative;
+    z-index: 4;
+}
+
 /* .nav-component{
     background-color: #449495;
     display: inline-block;
