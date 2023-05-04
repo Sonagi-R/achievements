@@ -6,8 +6,16 @@
 }
 
 body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #0D1225;
   color: white;
+}
+
+body::-webkit-scrollbar{
+  display: none;
 }
 
 .logo {

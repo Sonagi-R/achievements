@@ -19,3 +19,12 @@
     width: 200px;
     margin-right: 2rem;
 }
+
+.game-card{
+    cursor: pointer;
+}
+
+.game-card:hover{
+    transform: scale(1.05);
+    transition: all 0.1s;
+}
