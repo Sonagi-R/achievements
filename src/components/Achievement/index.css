@@ -1,0 +1,84 @@
+.pseudo-background{
+    /* background-image: url("https://pbs.twimg.com/media/FnfVL5SXkAAKXBc.png:large"); */
+    filter: blur(5px);
+    position: absolute;
+    height: 100vh;
+    width: 100dvw;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.game-title{
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding-left: 12rem;
+    height: 20px;
+    width: 90%;
+    /* background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+}
+
+.play-on-steam{
+    background-color: #449495;
+    color: black;
+    margin-left: 12rem;
+    height: 45px;
+    width: 195px;
+    margin-top: -1rem;
+    transition: all 0.5s;
+}
+
+.play-on-steam:hover{
+    background-color: #15F4EA;
+}
+
+.fa-circle-left, .fa-circle-right{
+    color: #15F4EA;
+    cursor: pointer;
+}
+
+.game-image{
+    height: 250px;
+    position: absolute;
+    transform: translateY(-75px);
+    border-radius: 10px;
+}
+
+.game-container{
+    display: flex;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: start;
+    padding-left: 5rem;
+    margin-top: 5rem;
+    height: 600px;
+    width: 90vw;
+    /* background: linear-gradient(45deg, #dff9ee, rgba(255,255,255,0)); */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* background-color: #070d17; */
+}
+
+.achievment-container{
+    width: 100%;
+    margin-left: 15rem;
+}
+
+.achievment-container h2{
+    text-align: center;
+    transform: translateY(-50px);
+    margin-bottom: 0;
+}
+
+.achievement{
+    display: flex;
+}
+
+.achievement img{
+    margin-right: 2rem;
+    height: 65px;
+}
