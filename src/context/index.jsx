@@ -7,9 +7,10 @@ export const UserProvider = ({ children }) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user_id, setUser_id] = useState("");
+  const [steamId, setSteamId] = useState("");
 
   return (
-    <UserContext.Provider value={{ user_id, setUser_id, username, setUsername, password, setPassword, email, setEmail }}>
+    <UserContext.Provider value={{ user_id, setUser_id, username, setUsername, password, setPassword, email, setEmail, steamId, setSteamId }}>
       {children}
     </UserContext.Provider>
   )

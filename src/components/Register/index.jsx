@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import './index.css'
 import { user } from "../../context";
 
 export default function Register() {
-  const { username, setUsername, email, setEmail, password, setPassword } = user();
+  const { username, setUsername, email, setEmail, password, setPassword, steamId, setSteamId } = user();
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
@@ -33,12 +34,12 @@ export default function Register() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: username,
           steam_id: steamId,
+          username: username,
           password: password
         }),
       };
-
+      //console.log(steamId, username, password)
       const res = await fetch("http://localhost:4000/users/register", options);
 
       if (res.ok) {
@@ -65,7 +66,6 @@ export default function Register() {
         <input onChange={steamIdHandler} type="text" placeholder="Steam ID" className="mt-2 form-entry"></input>
         <input onChange={passwordHandler} type="password" placeholder="Password" className="mt-2 form-entry"></input>
         <input onChange={confirmPasswordHandler} type="password" placeholder="Confirm Password" className="mt-2 form-entry"></input>
-        <input onChange={emailHandler} type="email" placeholder="Email" className="mt-2 form-entry"></input>
        <button type="submit" onClick={handleSubmit} className="mt-2 form-entry form-submit" >
           Submit
         </button>
