@@ -1,6 +1,9 @@
 import React from "react";
+import { user } from "../../context";
 
 export default function Login() {
+  const { setUsername, email, setEmail, password, setPassword } = user();
+
   const emailHandler = (e) => {
     setEmail(e.target.value);
   };
@@ -22,7 +25,6 @@ export default function Login() {
 
       const res = await fetch("http://localhost:4000/users/login", options);
       const data = await res.json();
-      setUser_id(data.userid);
       setUsername(data.username);
     };
 

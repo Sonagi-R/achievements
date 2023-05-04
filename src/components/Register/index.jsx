@@ -1,9 +1,9 @@
 import React from "react";
 import './index.css'
-//require('dotenv').config();
+import { user } from "../../context";
 
 export default function Register() {
-  //const REACT_APP_steamWebKey = {process.env.REACT_APP_STEAM_WEB_API_KEY}
+  const { username, setUsername, email, setEmail, password, setPassword } = user();
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
