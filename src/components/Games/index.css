@@ -19,3 +19,7 @@
     width: 200px;
     margin-right: 2rem;
 }
+
+.game-card{
+    cursor: pointer;
+}
