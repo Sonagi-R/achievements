@@ -75,11 +75,14 @@
 
 .fa-solid{
     color: white;
-    font-size: 40px;
+    font-size: 50px;
+    margin: 1rem;
 }
 
 h1{
   position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   color: #ffffff;  
   font-size: 14rem;
   line-height: 0.9;
