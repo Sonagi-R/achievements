@@ -17,7 +17,7 @@ export default function Login() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ email: email, password: password }),
+        body: JSON.stringify({ steam_id, username, password }),
       };
 
       const res = await fetch("http://localhost:4000/users/login", options);

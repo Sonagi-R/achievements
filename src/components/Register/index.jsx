@@ -1,10 +1,17 @@
 import React from "react";
 import './index.css'
+//require('dotenv').config();
 
 export default function Register() {
+  //const REACT_APP_steamWebKey = {process.env.REACT_APP_STEAM_WEB_API_KEY}
+
   const usernameHandler = (e) => {
     setUsername(e.target.value);
   };
+
+  const steamIdHandler = (e) => {
+    setSteamId(e.target.value)
+  }
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -20,15 +27,15 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    
     const registeruser = async () => {
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: username,
-          email: email,
-          password: password,
+          steam_id: steamId,
+          password: password
         }),
       };
 
@@ -55,6 +62,7 @@ export default function Register() {
       <h2 className="mb-3">Register</h2>
       <form className="d-flex flex-column">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-4 form-entry"></input>
+        <input onChange={steamIdHandler} type="text" placeholder="Steam ID" className="mt-2 form-entry"></input>
         <input onChange={passwordHandler} type="password" placeholder="Password" className="mt-2 form-entry"></input>
         <input onChange={confirmPasswordHandler} type="password" placeholder="Confirm Password" className="mt-2 form-entry"></input>
         <input onChange={emailHandler} type="email" placeholder="Email" className="mt-2 form-entry"></input>
