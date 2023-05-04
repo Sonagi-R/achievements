@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import './index.css'
 import { user } from "../../context";
 
 export default function Register() {
-  const { username, setUsername, email, setEmail, password, setPassword } = user();
+  const { username, setUsername, email, setEmail, password, setPassword, steamId, setSteamId } = user();
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
   };
+
+  const steamIdHandler = (e) => {
+    setSteamId(e.target.value)
+  }
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -23,18 +28,18 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    
     const registeruser = async () => {
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          steam_id: steamId,
           username: username,
-          email: email,
-          password: password,
+          password: password
         }),
       };
-
+      //console.log(steamId, username, password)
       const res = await fetch("http://localhost:4000/users/register", options);
 
       if (res.ok) {
@@ -58,9 +63,9 @@ export default function Register() {
       <h2 className="mb-3">Register</h2>
       <form className="d-flex flex-column">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-4 form-entry"></input>
+        <input onChange={steamIdHandler} type="text" placeholder="Steam ID" className="mt-2 form-entry"></input>
         <input onChange={passwordHandler} type="password" placeholder="Password" className="mt-2 form-entry"></input>
         <input onChange={confirmPasswordHandler} type="password" placeholder="Confirm Password" className="mt-2 form-entry"></input>
-        <input onChange={emailHandler} type="email" placeholder="Email" className="mt-2 form-entry"></input>
        <button type="submit" onClick={handleSubmit} className="mt-2 form-entry form-submit" >
           Submit
         </button>
