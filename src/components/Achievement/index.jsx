@@ -5,15 +5,18 @@ export default function Achievement() {
   return (
     <div>
       <div className="pseudo-background"></div>
-      <div className="game-container position-relative z-1">
-        <h2 className="game-title mb-5">The Witcher 3</h2>
-        <div className="d-flex gap-5">
+      <div className="d-flex justify-content-center">
+        <div className="game-container position-relative z-1 d-flex flex-wrap">
           <img
             className="game-image"
             src="https://thumbnails.pcgamingwiki.com/a/a4/The_Witcher_3_Wild_Hunt_-_cover.jpg/300px-The_Witcher_3_Wild_Hunt_-_cover.jpg"
             alt="picture of the witcher 3 game"
           />
+          <h2 className="game-title mb-5">The Witcher 3</h2>
+          <div className="change-game"><i class="fa-solid fa-circle-left fa-2xl"></i><i class="fa-solid fa-circle-right fa-2xl ms-3"></i></div>
+          <button className="play-on-steam">Play on Steam<i className="fa-brands fa-steam fa-2xl steam ms-3" title='steam'></i></button>
           <div className="achievment-container">
+            <h2>Achievements</h2>
             <div className="achievement">
               <img
                 className="d-inline-block"

@@ -10,38 +10,68 @@
 }
 
 .game-title{
-    margin-top: 3rem;
+    margin-top: 1rem;
     border-radius: 10px;
-    gap: 2rem;
-    text-align: start;
-    align-items: start;
-    padding-left: 1rem;
-    height: 50px;
-    background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    padding-left: 12rem;
+    height: 20px;
+    width: 90%;
+    /* background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+}
+
+.play-on-steam{
+    background-color: #449495;
+    color: black;
+    margin-left: 12rem;
+    height: 45px;
+    width: 195px;
+    margin-top: -1rem;
+    transition: all 0.5s;
+}
+
+.play-on-steam:hover{
+    background-color: #15F4EA;
+}
+
+.fa-circle-left, .fa-circle-right{
+    color: #15F4EA;
+    cursor: pointer;
 }
 
 .game-image{
     height: 250px;
+    position: absolute;
+    transform: translateY(-75px);
+    border-radius: 10px;
 }
 
-.achievment-container{
+.game-container{
     display: flex;
-    flex-direction: column;
     border-radius: 10px;
     padding: 25px;
-    gap: 2rem;
     text-align: start;
-    align-items: start;
     padding-left: 5rem;
-    height: 500px;
-    width: 1000px;
-    background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    margin-top: 5rem;
+    height: 600px;
+    width: 90vw;
+    /* background: linear-gradient(45deg, #dff9ee, rgba(255,255,255,0)); */
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255,255,255,0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* background-color: #070d17; */
+}
+
+.achievment-container{
+    width: 100%;
+    margin-left: 15rem;
+}
+
+.achievment-container h2{
+    text-align: center;
+    transform: translateY(-50px);
+    margin-bottom: 0;
 }
 
 .achievement{
