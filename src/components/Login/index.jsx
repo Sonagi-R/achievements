@@ -2,7 +2,7 @@ import React from "react";
 import { user } from "../../context";
 
 export default function Login() {
-  const { setUsername, email, setEmail, password, setPassword } = user();
+  const { setUsername, password, setPassword } = user();
 
   const emailHandler = (e) => {
     setEmail(e.target.value);

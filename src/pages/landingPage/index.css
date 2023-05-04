@@ -64,6 +64,20 @@
     height: 100%;
 }
 
+.content-block{
+    border-radius: 10px;
+    width: 50%;
+    background: linear-gradient(45deg, rgba(8, 4, 57, 0.49), rgba(6, 2, 82, 0.49));
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.fa-solid{
+    color: white;
+    font-size: 40px;
+}
+
 h1{
   position: relative;
   color: #ffffff;  
