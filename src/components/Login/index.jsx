@@ -1,4 +1,5 @@
 import React from "react";
+import '../Register/index.css'
 import { user } from "../../context";
 
 export default function Login() {
@@ -37,7 +38,7 @@ export default function Login() {
 
   return (
     <div className="d-flex mb-5 flex-column" id="login-page">
-      <h1 className="logo-title mb-5">Achievements</h1>
+      <h1 className="logo-title mb-5">Achievement</h1>
       <h2 className="mb-5">Login</h2>
       <form className="d-flex justify-content flex-column">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-2 form-entry"></input>

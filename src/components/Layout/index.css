@@ -27,12 +27,13 @@ nav{
 } */
 
 .nav-component{
-    background-color: #449495;
+    /* background-color: #449495; */
+    background-color: white;
     display: inline-block;
-    height: 75px;
-    width: 75px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
-    margin: 1rem 0.5rem;
+    margin: 1rem 0.3rem;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -40,4 +41,7 @@ nav{
 
 .active-nav{
     background-color: #15F4EA;
+    transform: translateY(30px);
+    height: 75px;
+    width: 75px;
 }

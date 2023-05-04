@@ -1,5 +1,13 @@
 
 
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
 .form-entry{
     display: block;
   margin-bottom: 1rem;
@@ -18,4 +26,14 @@
 .form-submit{
     background-color: #449495;
     color: white;
+}
+
+@media screen and (max-width: 800px) {
+    #root{
+        max-width: 100%;
+    }
+
+    .form-entry{
+        width: 100%;
+    }
 }
