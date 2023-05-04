@@ -1,0 +1,73 @@
+.filter{
+    filter: opacity(60%);
+    filter: blur(3px);
+    max-width: 100%;
+}
+
+.img-1{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.img-1::before{
+    content: "";
+    background-image: url("https://images8.alphacoders.com/129/1292495.jpg");
+    background-size: cover;
+    position: absolute;
+    filter: opacity(60%);
+    filter: blur(3px);
+    width: 100%;
+    height: 100%;
+}
+
+.img-2{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.img-2::before{
+    content: "";
+    background-image: url("https://images.squarespace-cdn.com/content/v1/5c95f8d416b640656eb7765a/1663080527577-FM4T46J6XQFK6DVR6IWB/zelda-tears.jpg?format=2500w");
+    background-size: cover;
+    position: absolute;
+    filter: opacity(60%);
+    filter: blur(3px);
+    width: 100%;
+    height: 100%;
+}
+
+.img-3{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.img-3::before{
+    content: "";
+    background-image: url("https://rare-gallery.com/mocahbig/391608-marvels-spider-man-2-ps5-playstation-game-4k-pc.jpg");
+    background-size: cover;
+    position: absolute;
+    filter: opacity(60%);
+    filter: blur(3px);
+    width: 100%;
+    height: 100%;
+}
+
+h1{
+  position: relative;
+  color: #ffffff;  
+  font-size: 14rem;
+  line-height: 0.9;
+  text-align: center;
+}
