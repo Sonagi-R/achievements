@@ -11,7 +11,7 @@ export default function landingPage() {
             <div className='img-1'>
                 <div className='content-block'>
                     <h1>Welcome</h1>
-                    <i className="fa-solid fa-trophy trophy" title='trophy'></i>
+                    <i className="fa-solid fa-solid-land fa-trophy trophy" title='trophy'></i>
                     <p>It's time to achieve greatness.</p>
                 </div>
             </div>
