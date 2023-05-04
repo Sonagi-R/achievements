@@ -36,7 +36,8 @@
 }
 
 .fa-circle-left, .fa-circle-right{
-    color: #15F4EA;
+    /* color: #15F4EA; */
+    color: white;
     cursor: pointer;
 }
 
