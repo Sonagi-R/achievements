@@ -56,7 +56,7 @@ export default function Register() {
     <div className="d-flex mb-5 flex-column" id="register-page">
       <h1 className="logo-title mb-5">Achievement</h1>
       <h2 className="mb-3">Register</h2>
-      <form className="d-flex flex-column">
+      <form className="d-flex flex-column align-items-center">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-4 form-entry"></input>
         <input onChange={passwordHandler} type="password" placeholder="Password" className="mt-2 form-entry"></input>
         <input onChange={confirmPasswordHandler} type="password" placeholder="Confirm Password" className="mt-2 form-entry"></input>

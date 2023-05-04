@@ -82,3 +82,28 @@
     margin-right: 2rem;
     height: 65px;
 }
+
+@media screen and (max-width: 1100px) {
+    .game-container{
+        flex-wrap: wrap;
+        height: 1000px;
+    }
+
+    .achievment-container{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .play-on-steam{
+        position: absolute;
+        transform: translateY(120px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .play-on-steam{
+        position: relative;
+        transform: translateY(120px);
+    }
+
+}
