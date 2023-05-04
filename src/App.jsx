@@ -11,12 +11,13 @@ function App() {
       <UserProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Pages.homePage />} />
+            <Route index element={<Pages.homePage />} /> 
             <Route path="/games" element={<Pages.gamesPage />} />
             <Route path="/achievements/:id" element={<Pages.achievementPage />} />
+            </Route>
+            <Route path="/landing" element={<Pages.landingPage />} />
             <Route path="/register" element={<Pages.registerPage />} />
             <Route path="/login" element={<Pages.loginPage />} />
-          </Route>
           <Route path={"/*"} element={<Navigate to={"/"} />} />
         </Routes>
       </UserProvider>
