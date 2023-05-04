@@ -87,6 +87,12 @@
     .game-container{
         flex-wrap: wrap;
         height: 1000px;
+        flex-direction: column;
+        gap: 7rem;
+    }
+
+    .change-game{
+        height: 20px;
     }
 
     .achievment-container{
@@ -99,11 +105,43 @@
         transform: translateY(120px);
     }
 }
-
+/* 
 @media screen and (max-width: 600px) {
-    .play-on-steam{
-        position: relative;
-        transform: translateY(120px);
+    #root {
+        max-width: 100%;
     }
 
-}
+    body::-webkit-scrollbar{
+        display: none;
+      }
+
+    .game-title{
+        text-align: center;
+        width: 100;
+    }
+
+    .change-game{
+        height: 50px;
+    }
+
+    .game-image{
+        transform: translateY(-420px); 
+    } 
+
+    .game-container{
+        flex-wrap: wrap;
+        height: 1000px;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .achievment-container{
+        width: 90%;
+        margin-left: 0;
+    }
+    .play-on-steam{
+        position: relative;
+        transform: translate(-190px, -30px);
+    }
+
+} */
