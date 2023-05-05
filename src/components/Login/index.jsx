@@ -12,7 +12,7 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const loginUser = async () => {
@@ -30,9 +30,59 @@ export default function Login() {
       const res = await fetch("http://localhost:4000/users/login", options);
       const data = await res.json();
       setUsername(data.username);
+      console.log(data.user_id, data.steam_id)
+      //getAllData(data.steam_id);
+
+      return [data.user_id, data.steam_id];
     };
 
-    loginUser();
+    const userData = await loginUser();
+    getAllData(userData);
+  }
+
+  const getAllData = async (userData) => {
+    //console.log("steam_id", steamId)
+    const userId = userData[0];
+    const userSteamId = userData[1];
+    let options;
+
+    const games = await fetch(`http://localhost:4000/steam/games/${userSteamId}`);
+    const gamesData = await games.json();
+    console.log(gamesData);
+    gamesData.response.games.map(async (gameObject) => {
+      console.log(gameObject)
+      options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        //headers: { "Accept": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ 
+          app_id: gameObject.appid, 
+          game_name: gameObject.name,
+          playtime: gameObject.playtime_windows_forever, 
+          user_id: userSteamId  
+        }),
+      };
+      const stashGames = await fetch(`http://localhost:4000/games/new`, options)
+    })
+
+    /*options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      //headers: { "Accept": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ 
+        app_id: gamesData.response.games.appid, 
+        game_name: gamesData.response.games.name,
+        playtime: gamesData.response.games.playtime_windows_forever, 
+        user_id: userSteamId  
+      }),
+    };
+    const stashGames = await fetch(`http://localhost:4000/games/${userSteamId}`);*/
+
+    const achievements = await fetch(`http://localhost:4000/steam/achievements/${userSteamId}`);
+    const achievementsData = await achievements.json();
+    console.log(achievementsData);
   }
 
   return (
