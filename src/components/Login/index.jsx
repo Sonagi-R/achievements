@@ -60,7 +60,7 @@ export default function Login() {
           app_id: gameObject.appid, 
           game_name: gameObject.name,
           playtime: gameObject.playtime_windows_forever, 
-          user_id: userSteamId  
+          user_id: userId  
         }),
       };
       const stashGames = await fetch(`http://localhost:4000/games/new`, options)
