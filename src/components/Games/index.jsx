@@ -6,7 +6,7 @@ export default function Games() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getAPI();
+    // getAPI();
   }, []);
 
   const getAPI = async () => {
@@ -23,40 +23,65 @@ export default function Games() {
 
   return (
     <>
-
-        <h1 className="text-center">Dashboard</h1>
-      <h2 className="text-center">Popular Games</h2>
-      <div className="row games-main">
-        <div className="col-2">
-          <h2 className="category-header">Categories</h2>
-          <div className="game-category">Action</div>
-          <div className="game-category">Adventure</div>
-          <div className="game-category">Platform</div>
-          <div className="game-category">Puzzle</div>
-          <div className="game-category">Shooter</div>
-          <div className="game-category">RPG</div>
+      <h1 className="text-center">Dashboard</h1>
+      <h2 className="text-start games-container-title">Popular Games</h2>
+      <div className="position-relative search-container">
+        <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
+        <input placeholder="Search For a Game" className="games-search color-black" type="text" />
       </div>
-      <div className="col-10">
-        <div className="games-container my-5">
-          {games.map((game) => (
-            <div className="card p-0 game-card" style={{ width: "18rem" }}>
-              <img className="card-img-top" src={game.background_image} alt="Card image cap" />
-              <div className="card-body">
-                <h5 className="card-title">{game.name}</h5>
-                <p className="card-text">
-                  {game.genres.map((genre) => (
-                    <span>{genre.name} </span>
-                  ))}
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
+      <div className="row games-main">
+        <div className="col-2 text-start">
+          <div className="mb-5 mt-4">
+            <h2 className="category-header">New Releases</h2>
+            <div className="game-category ps-4">Action</div>
+            <div className="game-category ps-4">Adventure</div>
+            <div className="game-category ps-4">Platform</div>
+            <div className="game-category ps-4">Puzzle</div>
+            <div className="game-category ps-4">Shooter</div>
+            <div className="game-category ps-4">RPG</div>
+          </div>
+
+          <div className="mb-5">
+            <h2 className="category-header">Categories</h2>
+            <div className="game-category ps-4">Action</div>
+            <div className="game-category ps-4">Adventure</div>
+            <div className="game-category ps-4">Platform</div>
+            <div className="game-category ps-4">Puzzle</div>
+            <div className="game-category ps-4">Shooter</div>
+            <div className="game-category ps-4">RPG</div>
+          </div>
+
+          <div>
+            <h2 className="category-header">Categories</h2>
+            <div className="game-category ps-4">Action</div>
+            <div className="game-category ps-4">Adventure</div>
+            <div className="game-category ps-4">Platform</div>
+            <div className="game-category ps-4">Puzzle</div>
+            <div className="game-category ps-4">Shooter</div>
+            <div className="game-category ps-4">RPG</div>
+          </div>
+        </div>
+        <div className="col-10">
+          <div className="games-container my-5">
+            {games.map((game) => (
+              <div className="card p-0 game-card" style={{ width: "18rem" }}>
+                <img className="card-img-top" src={game.background_image} alt="Card image cap" />
+                <div className="card-body">
+                  <h5 className="card-title">{game.name}</h5>
+                  <p className="card-text">
+                    {game.genres.map((genre) => (
+                      <span>{genre.name} </span>
+                    ))}
+                  </p>
+                  <a href="#" className="btn btn-primary">
+                    Go somewhere
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     </>
   );
 }
