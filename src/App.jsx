@@ -14,6 +14,7 @@ function App() {
             <Route index element={<Pages.homePage />} /> 
             <Route path="/games" element={<Pages.gamesPage />} />
             <Route path="/achievements/:id" element={<Pages.achievementPage />} />
+            <Route path="/leaderboard" element={<Pages.leaderboardPage />} />
             </Route>
             <Route path="/landing" element={<Pages.landingPage />} />
             <Route path="/register" element={<Pages.registerPage />} />
