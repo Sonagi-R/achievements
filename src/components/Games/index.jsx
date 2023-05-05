@@ -2,15 +2,19 @@ import React from "react";
 import "./index.css";
 
 export default function Games() {
-  return (
+  return (<main className="d-flex">
+    <div className="categories">
+    </div>
+    <div className="main-content">
+      <h1 className="text-start">My Games</h1>
     <div className="games-container my-5">
       <div className="card p-0 game-card" style={{ width: "18rem" }}>
         <img className="card-img-top" src="https://assets-prd.ignimgs.com/2021/12/08/witcher3-1638987659679.jpg" alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
       </div>
@@ -23,8 +27,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
               </div>
           </div>
@@ -37,8 +41,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -51,8 +55,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -65,8 +69,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -79,8 +83,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -93,8 +97,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -107,8 +111,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -117,8 +121,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
       </div>
@@ -131,8 +135,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
               </div>
           </div>
@@ -145,8 +149,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -159,8 +163,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -173,8 +177,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -187,8 +191,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -201,8 +205,8 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
@@ -215,11 +219,13 @@ export default function Games() {
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
           <p className="card-text">Some of the Card's content.</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
+          <a href="#" className="btn btn-info">
+            View Details
           </a>
         </div>
           </div>
+      </div>
     </div>
+    </main>
   );
 }

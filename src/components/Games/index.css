@@ -28,3 +28,11 @@
     transform: scale(1.05);
     transition: all 0.1s;
 }
+
+.main-content{
+    width: 80vw;
+}
+
+.categories{
+    flex-basis: 20vw;
+}
