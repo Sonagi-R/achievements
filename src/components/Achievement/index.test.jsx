@@ -35,5 +35,16 @@ describe("register page", () => {
     const heading = screen.getByRole("heading", { name: /The Witcher 3/i });
     expect(heading).toBeInTheDocument();
   });
+
+  it("renders the Play on Steam button", () => {
+    const button = screen.getByRole("button", { name: /Play on Steam/i });
+    expect(button).toBeInTheDocument();
+  });
+
+  it("renders the achievements container", () => {
+      const achievementContainer = document.querySelector(".achievement-container");
+    expect(achievementContainer).toBeInTheDocument();
+    });
+
     
 });
