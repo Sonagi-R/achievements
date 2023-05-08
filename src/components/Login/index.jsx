@@ -88,7 +88,7 @@ export default function Login() {
   }
 
   return (
-    <div className="d-flex mb-5 flex-column" id="login-page">
+    <div className="d-flex mb-5 flex-column flex-grow-1" id="login-page">
       <h1 className="logo-title mb-5">Achievement</h1>
       <h2 className="mb-5">Login</h2>
       <form className="d-flex justify-content flex-column">
@@ -101,6 +101,6 @@ export default function Login() {
       <p>
         Don't have an account? <a href="/register">Register Here</a>
       </p>
-    </div>
+      </div>
   );
 }
