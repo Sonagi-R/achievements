@@ -6,7 +6,7 @@ export default function Games() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    // getAPI();
+    getAPI();
   }, []);
 
   const getAPI = async () => {
@@ -21,14 +21,18 @@ export default function Games() {
     }
   };
 
+  
+
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
-    if (allCards[index].style.transform == "none") {
-      allCards[index].style.transform = "rotateY(180deg)";
-    } else {
-      allCards[index].style.transform = "none";
-    }
-  };
+    console.log(allCards[1].style.transform);
+      if (!allCards[index].style.transform || allCards[index].style.transform == "none") {
+        allCards[index].style.transform = "rotateY(180deg)";
+      } else {
+        allCards[index].style.transform = "none";
+      }
+    };
+
 
   return (
     <>
