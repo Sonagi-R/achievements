@@ -38,16 +38,16 @@ export default function Games() {
       }
     };
 
-    async function syncGames() {
-        const user_id = localStorage.getItem("user_id");
-        const user_Steam_id = localStorage.getItem("steam_id");
-        console.log(user_id, user_Steam_id)
-        const games = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
-        const gameData = await games.json();
-        console.log(gameData);
-        console.log(gameData.response.games);
-        setGamesData(gameData.response.games);
-    }
+    // async function syncGames() {
+    //     const user_id = localStorage.getItem("user_id");
+    //     const user_Steam_id = localStorage.getItem("steam_id");
+    //     console.log(user_id, user_Steam_id)
+    //     const games = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
+    //     const gameData = await games.json();
+    //     console.log(gameData);
+    //     console.log(gameData.response.games);
+    //     setGamesData(gameData.response.games);
+    // }
 
     /*useEffect(() => {
         syncGames();
@@ -59,7 +59,7 @@ export default function Games() {
       <h2 className="text-start games-container-title">Popular Games</h2>
       {/* might move search bar above first category to avoid it looking to long in current position */}
 
-      <button onClick={syncGames}>Sync Your Games</button>
+      {/* <button onClick={syncGames}>Sync Your Games</button>
           {gamesData && Array.isArray(gamesData) &&
             gamesData.map((game) => (
             <div className="flashcard" key={game.name}>
@@ -67,7 +67,7 @@ export default function Games() {
                 <title>{game.name}</title>
                 <p>{game.name}</p>
             </div>
-          ))}
+          ))} */}
       
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
