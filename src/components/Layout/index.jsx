@@ -35,6 +35,7 @@ export default function Layout() {
             <NavLink to="/store" className="nav-component">
               <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
             </NavLink>
+            
           </>
         ) : (
           ""

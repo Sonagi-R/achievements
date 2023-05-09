@@ -4,7 +4,7 @@ import { user } from "../../context";
 
 export default function Login() {
   const { username, setUsername, email, setEmail, password, setPassword, user_id, setUser_id, steamId, setSteamId } = user();
-  
+
   const usernameHandler = (e) => {
     setUsername(e.target.value);
   };
@@ -36,16 +36,19 @@ export default function Login() {
       };
       const user = await fetch("http://localhost:4000/users/current", options);
       const userdata = await user.json();
-      console.log(userdata)
+      if (user.ok) {
+        console.log(userdata)
       setSteamId(userdata.steam_id);
       setUser_id(userdata.user_id);
       localStorage.setItem("user_id", userdata.user_id);
-      localStorage.setItem("steam_id", userdata.steam_id);
+        localStorage.setItem("steam_id", userdata.steam_id);
+        window.location.assign("/games")
+      }
       //getAllData([userdata.user_id, userdata.steam_id]);
       //getAllData(data.steam_id);
       //localStorage.setItem("userId", data.userid);
       //localStorage.setItem("steamId", data.steam_id);
-      return [userdata.user_id, userdata.steam_id];
+      // return [userdata.user_id, userdata.steam_id];
     };
     const userdata = await loginUser();
     console.log(userdata)
