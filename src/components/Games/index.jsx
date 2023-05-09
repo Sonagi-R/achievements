@@ -4,6 +4,7 @@ import "./index.css";
 
 export default function Games() {
   const [games, setGames] = useState([]);
+  //const [gamesData, setGamesData] = useState([]);
 
   useEffect(() => {
     getAPI();
@@ -20,9 +21,7 @@ export default function Games() {
       console.log(data.results[i].name);
     }
   };
-
   
-
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
     console.log(allCards[1].style.transform);
@@ -33,12 +32,37 @@ export default function Games() {
       }
     };
 
+    async function syncGames() {
+        const user_id = localStorage.getItem("user_id");
+        const user_Steam_id = localStorage.getItem("steam_id");
+        console.log(user_id, user_Steam_id)
+        const games = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
+        const gameData = await games.json();
+        console.log(gameData);
+        console.log(gameData.response.games);
+        setGamesData(gameData.response.games);
+    }
+
+    /*useEffect(() => {
+        syncGames();
+    }, [])*/
 
   return (
     <>
       <h1 className="text-center">Dashboard</h1>
       <h2 className="text-start games-container-title">Popular Games</h2>
       {/* might move search bar above first category to avoid it looking to long in current position */}
+
+      <button onClick={syncGames}>Sync Your Games</button>
+          {gamesData && Array.isArray(gamesData) &&
+            gamesData.map((game) => (
+            <div className="flashcard" key={game.name}>
+                <img src="https://assets-prd.ignimgs.com/2021/12/08/witcher3-1638987659679.jpg" alt="" />
+                <title>{game.name}</title>
+                <p>{game.name}</p>
+            </div>
+          ))}
+      
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
         <input placeholder="Search For a Game" className="games-search color-black" type="text" />
