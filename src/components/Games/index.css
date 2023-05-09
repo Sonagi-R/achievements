@@ -38,3 +38,34 @@
 .game-card h5{
     margin-bottom: 1rem;
 }
+
+.game-category{
+    font-size: large;
+    margin-bottom: 0.3rem;
+}
+
+.games-container-title{
+    margin-left: 20rem;
+}
+
+.search-container{
+    margin-left: 20rem;
+    color: black;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.games-search{
+    display: block;
+  margin-bottom: 1rem;
+  width: 63vw;
+  padding-left: 20px;
+  height: 5vh;
+  border-radius: 99999px;
+  background-color: #E4E4E4;
+  color: black;
+}
+
+.games-search::placeholder{
+    padding-left: 2rem;
+}

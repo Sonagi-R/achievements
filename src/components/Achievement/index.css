@@ -64,12 +64,12 @@
     /* background-color: #070d17; */
 }
 
-.achievment-container{
+.achievement-container{
     width: 100%;
     margin-left: 15rem;
 }
 
-.achievment-container h2{
+.achievement-container h2{
     text-align: center;
     transform: translateY(-50px);
     margin-bottom: 0;

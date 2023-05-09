@@ -13,9 +13,9 @@ export default function Achievement() {
             alt="picture of the witcher 3 game"
           />
           <h2 className="game-title mb-5">The Witcher 3</h2>
-          <div className="change-game"><i class="fa-solid fa-circle-left fa-2xl"></i><i class="fa-solid fa-circle-right fa-2xl ms-3"></i></div>
+          <div className="change-game"><i className="fa-solid fa-circle-left fa-2xl"></i><i className="fa-solid fa-circle-right fa-2xl ms-3"></i></div>
           <button className="play-on-steam" href="#">Play on Steam<i className="fa-brands fa-steam fa-2xl steam ms-3" title='steam'></i></button>
-          <div className="achievment-container">
+          <div className="achievement-container">
             <h2>Achievements</h2>
             <div className="achievement">
               <img

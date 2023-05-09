@@ -48,9 +48,9 @@ describe("register page", () => {
     expect(confirmPassword).toBeInTheDocument();
   });
 
-  it("renders an input field for entering the email", () => {
-    const email = screen.queryByPlaceholderText("Email");
-    expect(email).toBeInTheDocument();
+  it("renders an input field for entering the steam id", () => {
+    const steamID = screen.queryByPlaceholderText("Steam ID");
+    expect(steamID).toBeInTheDocument();
   });
 
   it("renders a sumbit button for registering", () => {

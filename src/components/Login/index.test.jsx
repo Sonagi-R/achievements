@@ -34,9 +34,9 @@ describe("register page", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it("renders an input field for entering the email", () => {
-    const email = screen.queryByPlaceholderText("Email");
-    expect(email).toBeInTheDocument();
+  it("renders an input field for entering the username", () => {
+    const username = screen.queryByPlaceholderText("Username");
+    expect(username).toBeInTheDocument();
   });
 
   it("renders an input field for entering the password", () => {

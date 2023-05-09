@@ -4,7 +4,9 @@
 
 nav{
     position: relative;
+    width: 100%;
     z-index: 4;
+    top: 0;
 }
 
 /* .nav-component{
@@ -44,4 +46,51 @@ nav{
     transform: translateY(30px);
     height: 75px;
     width: 75px;
+}
+
+.toggle-button{
+    height: 40px;
+    width: 70px;
+    border-radius: 9999px;
+    background-color: black;
+    border: 0.5px solid rgba(134, 134, 134, 0.39);
+    position: absolute;
+    right: 0;
+    transition: all 0.5s;
+}
+
+.toggle-circle{
+    display: block;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    transition: all 0.5s;
+}
+
+.toggle-button-light{
+    height: 40px;
+    width: 70px;
+    border-radius: 9999px;
+    border: 0.5px solid rgba(134, 134, 134, 0.39);
+    position: absolute;
+    right: 0;
+    background-color: white;
+    transition: all 0.5s;
+}
+
+.toggle-circle-light{
+    display: block;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    transform: translateX(-25px);
+    background-color: black;
+    transition: all 0.5s;
 }
