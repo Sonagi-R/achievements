@@ -21,7 +21,7 @@ export default function Games() {
       console.log(data.results[i].name);
     }
   };
-
+  
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
     console.log(allCards[1].style.transform);
@@ -52,7 +52,7 @@ export default function Games() {
       <h1 className="text-center">Dashboard</h1>
       <h2 className="text-start games-container-title">Popular Games</h2>
       {/* might move search bar above first category to avoid it looking to long in current position */}
-      
+
       <button onClick={syncGames}>Sync Your Games</button>
           {gamesData && Array.isArray(gamesData) &&
             gamesData.map((game) => (
