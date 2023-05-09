@@ -21,6 +21,19 @@ export default function Games() {
     }
   };
 
+  
+
+  const handleCardFlip = (index) => {
+    const allCards = document.querySelectorAll(".flip-card-inner");
+    console.log(allCards[1].style.transform);
+      if (!allCards[index].style.transform || allCards[index].style.transform == "none") {
+        allCards[index].style.transform = "rotateY(180deg)";
+      } else {
+        allCards[index].style.transform = "none";
+      }
+    };
+
+
   return (
     <>
       <h1 className="text-center">Dashboard</h1>
@@ -64,19 +77,47 @@ export default function Games() {
         </div>
         <div className="col-10">
           <div className="games-container my-5">
-            {games.map((game) => (
-              <div className="card p-0 game-card" style={{ width: "18rem" }}>
-                <img className="card-img-top" src={game.background_image} alt="Card image cap" />
-                <div className="card-body">
-                  <h5 className="card-title">{game.name}</h5>
-                  <p className="card-text">
-                    {game.genres.map((genre) => (
-                      <span>{genre.name} </span>
-                    ))}
-                  </p>
-                  <a href="#" className="btn btn-primary">
-                    Go somewhere
-                  </a>
+            {games.map((game, index) => (
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
+                    <img className="card-img-top" src={game.background_image} alt="Card image cap" />
+                    <div className="card-body">
+                      <h5 className="card-title">{game.name}</h5>
+                      <p className="card-text">
+                        {game.genres.map((genre) => (
+                          <span>{genre.name} </span>
+                        ))}
+                      </p>
+                      <button
+                        onClick={() => {
+                          handleCardFlip(index);
+                        }}
+                        className="btn btn-primary"
+                      >
+                        Flip Card
+                      </button>
+                    </div>
+                  </div>
+                  <div className="card flip-card-back">
+                    <h1 className="card-header">Game Title</h1>
+                    <p className="card-text">Achievement 1</p>
+                    <p className="card-text">Achievement 2</p>
+                    <button
+                      onClick={() => {
+                        handleCardFlip(index);
+                      }}
+                      className="btn btn-primary"
+                    >
+                      Flip Card
+                    </button>
+                    <a
+                      href="/achievements/2"
+                      className="btn btn-primary mt-2"
+                    >
+                      View Game Page
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

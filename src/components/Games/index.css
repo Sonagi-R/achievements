@@ -64,8 +64,40 @@
   border-radius: 99999px;
   background-color: #E4E4E4;
   color: black;
+  padding-left: 4rem;
 }
 
-.games-search::placeholder{
-    padding-left: 2rem;
+.flip-card {
+    position: relative;
+    height: 400px;
+    width: 300px;
+    background-color: transparent;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+
+.flip-card-inner{
+    position: relative;
+    width: 100%;
+  height: 100%;
+    transition: transform 0.8s;
+  transform-style: preserve-3d;
+  transform: none;
 }
+
+/* .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  } */
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+  height: 100%;
+  }
+
+  .flip-card-back{
+    transform: rotateY(180deg);
+    border-radius: 10px;
+    border: 2px solid rgba(2, 133, 159, 0.57);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
