@@ -6,7 +6,7 @@ export default function Games() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getAPI();
+    // getAPI();
   }, []);
 
   const getAPI = async () => {
