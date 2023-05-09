@@ -1,5 +1,4 @@
 import React from "react";
-import '../Register/index.css'
 import { user } from "../../context";
 
 export default function Login() {
@@ -58,7 +57,7 @@ export default function Login() {
 
     const userdata = await loginUser();
     console.log(userdata)
-    getAllData(userdata);
+    //getAllData(userdata);
   }
 
   const getAllData = async (userData) => {
@@ -81,28 +80,6 @@ export default function Login() {
       console.log(gameObject)
       
       //2. store games
-      console.log(data.user_id, data.steam_id)
-      //getAllData(data.steam_id);
-
-      return [data.user_id, data.steam_id];
-    };
-
-    const userData = await loginUser();
-    getAllData(userData);
-  }
-
-  const getAllData = async (userData) => {
-    //console.log("steam_id", steamId)
-    const userId = userData[0];
-    const userSteamId = userData[1];
-    let options;
-
-    const games = await fetch(`http://localhost:4000/steam/games/${userSteamId}`);
-    const gamesData = await games.json();
-    console.log(gamesData);
-    gamesData.response.games.map(async (gameObject) => {
-      console.log(gameObject)
-
       options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -115,7 +92,6 @@ export default function Login() {
           user_id: userId  
         }),
       };
-
       const stashGames = await fetch(`http://localhost:4000/games/new`, options);
       const storedGames = await stashGames.json();
       console.log(storedGames)
@@ -175,8 +151,8 @@ export default function Login() {
   }
 
   return (
-    <div className="d-flex mb-5 flex-column flex-grow-1" id="login-page">
-      <h1 className="logo-title mb-5">Achievement</h1>
+    <div className="d-flex mb-5 flex-column" id="login-page">
+      <h1 className="logo-title mb-5">Achievements</h1>
       <h2 className="mb-5">Login</h2>
       <form className="d-flex justify-content flex-column">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-2 form-entry"></input>
@@ -188,6 +164,6 @@ export default function Login() {
       <p>
         Don't have an account? <a href="/register">Register Here</a>
       </p>
-      </div>
+    </div>
   );
 }
