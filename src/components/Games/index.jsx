@@ -4,6 +4,7 @@ import "./index.css";
 
 export default function Games() {
   const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames] = useState([])
 
   useEffect(() => {
     getAPI();
@@ -15,13 +16,17 @@ export default function Games() {
     console.log(data.results);
 
     setGames(data.results);
+    setFilteredGames(data.results)
 
     for (let i = 0; i < data.results.length; i++) {
       console.log(data.results[i].name);
     }
   };
 
-  
+
+  const handleSearch = (e) => {
+    setFilteredGames(games.filter(game => game.name.toLowerCase().includes(e.target.value.toLowerCase())))
+  }
 
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
@@ -41,7 +46,7 @@ export default function Games() {
       {/* might move search bar above first category to avoid it looking to long in current position */}
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
-        <input placeholder="Search For a Game" className="games-search color-black" type="text" />
+        <input placeholder="Search For a Game" onChange={handleSearch} className="games-search color-black" type="text" />
       </div>
       <div className="row games-main">
         <div className="col-2 text-start">
@@ -77,7 +82,7 @@ export default function Games() {
         </div>
         <div className="col-10">
           <div className="games-container my-5">
-            {games.map((game, index) => (
+            {filteredGames.map((game, index) => (
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
