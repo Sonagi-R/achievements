@@ -6,7 +6,7 @@ nav{
     position: relative;
     width: 100%;
     z-index: 4;
-    top: 0;
+    height: 17vh;
 }
 
 /* .nav-component{

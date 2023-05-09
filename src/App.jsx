@@ -16,11 +16,12 @@ function App() {
               <Route index element={<Pages.homePage />} />
               <Route path="/games" element={<Pages.gamesPage />} />
               <Route path="/achievements/:id" element={<Pages.achievementPage />} />
+              <Route path="/achievements" element={<Pages.achievementsPage />} />
               <Route path="/leaderboard" element={<Pages.leaderboardPage />} />
-              <Route path="/landing" element={<Pages.landingPage />} />
               <Route path="/register" element={<Pages.registerPage />} />
               <Route path="/login" element={<Pages.loginPage />} />
             </Route>
+            <Route path="/landing" element={<Pages.landingPage />} />
             <Route path={"/*"} element={<Navigate to={"/"} />} />
           </Routes>
         </UserProvider>
