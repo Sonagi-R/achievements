@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 
+import { user } from "../../context";
+
 export default function Games() {
+    const [gamesData, setGamesData] = useState([]);
+
+    async function syncGames() {
+        const user_id = localStorage.getItem("user_id");
+        const user_Steam_id = localStorage.getItem("steam_id");
+        console.log(user_id, user_Steam_id)
+        const games = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
+        const gameData = await games.json();
+        console.log(gameData);
+        console.log(gameData.response.games);
+        setGamesData(gameData.response.games);
+    }  
+
+    useEffect(() => {
+        syncGames();
+    }, [])
+
   return (
-      <div className="games-container">
+        <div className="games-container">
+        <button onClick={syncGames}>Sync Your Games</button>
+          {gamesData && Array.isArray(gamesData) &&
+            gamesData.map((game) => (
+            <div className="flashcard" key={game.name}>
+                <img src="https://assets-prd.ignimgs.com/2021/12/08/witcher3-1638987659679.jpg" alt="" />
+                <title>{game.name}</title>
+                <p>{game.name}</p>
+            </div>
+          ))}
+
           <div className="game">
               <img src="https://assets-prd.ignimgs.com/2021/12/08/witcher3-1638987659679.jpg" alt="" />
               <title></title>
@@ -44,6 +73,6 @@ export default function Games() {
               <title></title>
               <p>Random Text</p>
           </div>
-    </div>
+        </div>
   );
 }

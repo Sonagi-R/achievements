@@ -2,7 +2,7 @@ import React from "react";
 import { user } from "../../context";
 
 export default function Login() {
-  const { username, setUsername, email, setEmail, password, setPassword } = user();
+  const { username, setUsername, email, setEmail, password, setPassword, user_id, setUser_id, steamId, setSteamId } = user();
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
@@ -16,7 +16,9 @@ export default function Login() {
     e.preventDefault();
 
     const loginUser = async () => {
-      const options = {
+      let options;
+
+      options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         //headers: { "Accept": "application/json" },
@@ -26,31 +28,58 @@ export default function Login() {
           password: password 
         }),
       };
-
       const res = await fetch("http://localhost:4000/users/login", options);
       const data = await res.json();
       setUsername(data.username);
-      console.log(data.user_id, data.steam_id)
-      //getAllData(data.steam_id);
 
-      return [data.user_id, data.steam_id];
+      options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        //headers: { "Accept": "application/json" },
+        credentials: "include"
+      };
+      const user = await fetch("http://localhost:4000/users/current", options);
+      const userdata = await user.json();
+      console.log(userdata)
+      setSteamId(userdata.steam_id);
+      setUser_id(userdata.user_id);
+      localStorage.setItem("user_id", userdata.user_id);
+      localStorage.setItem("steam_id", userdata.steam_id);
+
+      //getAllData([userdata.user_id, userdata.steam_id]);
+
+      //getAllData(data.steam_id);
+      //localStorage.setItem("userId", data.userid);
+      //localStorage.setItem("steamId", data.steam_id);
+
+      return [userdata.user_id, userdata.steam_id];
     };
 
-    const userData = await loginUser();
-    getAllData(userData);
+    const userdata = await loginUser();
+    console.log(userdata)
+    getAllData(userdata);
   }
 
   const getAllData = async (userData) => {
-    //console.log("steam_id", steamId)
     const userId = userData[0];
     const userSteamId = userData[1];
+
+    //const userId = localStorage.getItem("userId");
+    //const userSteamId = localStorage.getItem("steamId");
+
+    console.log(userId, userSteamId)
+    
     let options;
 
+    //1. get games
     const games = await fetch(`http://localhost:4000/steam/games/${userSteamId}`);
     const gamesData = await games.json();
     console.log(gamesData);
+    
     gamesData.response.games.map(async (gameObject) => {
       console.log(gameObject)
+      
+      //2. store games
       options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -63,7 +92,43 @@ export default function Login() {
           user_id: userId  
         }),
       };
-      const stashGames = await fetch(`http://localhost:4000/games/new`, options)
+      const stashGames = await fetch(`http://localhost:4000/games/new`, options);
+      const storedGames = await stashGames.json();
+      console.log(storedGames)
+
+      //3. get achievements
+      options = {
+        method: "GET",
+        credentials: "include"
+      };
+      const getAchievements = await fetch(`http://localhost:4000/steam/achievements/?appid=${gameObject.appid}&steamid=${userSteamId}`);
+      const achievementsData = await getAchievements.json();
+      console.log(achievementsData)
+  
+      if ('achievements' in achievementsData.playerstats) {
+        achievementsData.playerstats.achievements.map( async (achievementObject) => {
+          //4. store achievements
+          console.log(achievementObject.apiname)
+          options = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ 
+              achievement_name: achievementObject.apiname,
+              description: "description", 
+              icon: "description", 
+              app_id: gameObject.appid,
+              user_id: userId  
+            }),
+          };
+          const stashAchievements = await fetch(`http://localhost:4000/achievements/new`, options)
+          const storedAchievements = await stashAchievements.json();
+          console.log(storedAchievements)
+        })
+        console.log("true")
+      } else {
+        console.log("false")
+      }
     })
 
     /*options = {
@@ -80,9 +145,9 @@ export default function Login() {
     };
     const stashGames = await fetch(`http://localhost:4000/games/${userSteamId}`);*/
 
-    const achievements = await fetch(`http://localhost:4000/steam/achievements/${userSteamId}`);
+    /*const achievements = await fetch(`http://localhost:4000/steam/achievements/${userSteamId}`);
     const achievementsData = await achievements.json();
-    console.log(achievementsData);
+    console.log(achievementsData);*/
   }
 
   return (
