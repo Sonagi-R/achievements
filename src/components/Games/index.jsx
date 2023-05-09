@@ -1,10 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 
-import { user } from "../../context";
-
 export default function Games() {
-    const [gamesData, setGamesData] = useState([]);
+  const [games, setGames] = useState([]);
+  //const [gamesData, setGamesData] = useState([]);
+
+  useEffect(() => {
+    getAPI();
+  }, []);
+
+  const getAPI = async () => {
+    const response = await fetch("https://api.rawg.io/api/games?key=db170b4f923142118fbbdc3e17c16422&&platforms=1");
+    const data = await response.json();
+    console.log(data.results);
+
+    setGames(data.results);
+
+    for (let i = 0; i < data.results.length; i++) {
+      console.log(data.results[i].name);
+    }
+  };
+
+  const handleCardFlip = (index) => {
+    const allCards = document.querySelectorAll(".flip-card-inner");
+    console.log(allCards[1].style.transform);
+      if (!allCards[index].style.transform || allCards[index].style.transform == "none") {
+        allCards[index].style.transform = "rotateY(180deg)";
+      } else {
+        allCards[index].style.transform = "none";
+      }
+    };
 
     async function syncGames() {
         const user_id = localStorage.getItem("user_id");
@@ -15,15 +41,19 @@ export default function Games() {
         console.log(gameData);
         console.log(gameData.response.games);
         setGamesData(gameData.response.games);
-    }  
+    }
 
-    useEffect(() => {
+    /*useEffect(() => {
         syncGames();
-    }, [])
+    }, [])*/
 
   return (
-        <div className="games-container">
-        <button onClick={syncGames}>Sync Your Games</button>
+    <>
+      <h1 className="text-center">Dashboard</h1>
+      <h2 className="text-start games-container-title">Popular Games</h2>
+      {/* might move search bar above first category to avoid it looking to long in current position */}
+      
+      <button onClick={syncGames}>Sync Your Games</button>
           {gamesData && Array.isArray(gamesData) &&
             gamesData.map((game) => (
             <div className="flashcard" key={game.name}>
@@ -32,47 +62,92 @@ export default function Games() {
                 <p>{game.name}</p>
             </div>
           ))}
+      
+      <div className="position-relative search-container">
+        <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
+        <input placeholder="Search For a Game" className="games-search color-black" type="text" />
+      </div>
+      <div className="row games-main">
+        <div className="col-2 text-start">
+          <div className="mb-5 mt-4">
+            <h2 className="category-header">New Releases</h2>
+            <div className="game-category ps-4">Action</div>
+            <div className="game-category ps-4">Adventure</div>
+            <div className="game-category ps-4">Platform</div>
+            <div className="game-category ps-4">Puzzle</div>
+            <div className="game-category ps-4">Shooter</div>
+            <div className="game-category ps-4">RPG</div>
+          </div>
 
-          <div className="game">
-              <img src="https://assets-prd.ignimgs.com/2021/12/08/witcher3-1638987659679.jpg" alt="" />
-              <title></title>
-              <p>Random Text</p>
+          <div className="mb-5">
+            <h2 className="category-header">Categories</h2>
+            <div className="game-category ps-4">Action</div>
+            <div className="game-category ps-4">Adventure</div>
+            <div className="game-category ps-4">Platform</div>
+            <div className="game-category ps-4">Puzzle</div>
+            <div className="game-category ps-4">Shooter</div>
+            <div className="game-category ps-4">RPG</div>
           </div>
-          <div className="game">
-              <img src="https://gaming-cdn.com/images/products/2419/616x353/batman-arkham-knight-pc-game-steam-cover.jpg?v=1649319361" alt="" />
-              <title></title>
-              <p>Random Text</p>
-          </div>
-          <div className="game">
-              <img src="https://prod.assets.earlygamecdn.com/images/csgo-2.jpg?mtime=1678019572" alt="" />
-              <title></title>
-              <p>Random Text</p>
-          </div>
-          <div className="game">
-              <img src="https://rocketleague.media.zestyio.com/seasonylogostime.jpg?width=1440&optimize=high" alt="" />
-              <title></title>
-              <p>Random Text</p>
-          </div>
-          <div className="game">
-              <img src="https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/H2x1_NSwitchDS_DivinityOriginalSin2DefinitiveEdition_image1600w.jpg" alt="" />
-              <title></title>
-              <p>Random Text</p>
-          </div>
-          <div className="game">
-              <img src="https://image.api.playstation.com/vulcan/img/cfn/113075PxnarzRek4cRpjrRWSpLfrcBd23B5e_Yj2azms6nWYKmySv4h3a22G5_R1CM4BQUmSRD6oOArDROKv041NUkgun78-.png" alt="" />
-              <title></title>
-              <p>Random Text</p>
-          </div>
-          <div className="game">
-              <img src="https://i.ytimg.com/vi/qyeDBQow1bI/maxresdefault.jpg" alt="" />
-              <title></title>
-              <p>Random Text</p>
-          </div>
-          <div className="game">
-              <img src="https://assets-prd.ignimgs.com/2022/01/05/rayman-3-button-1641344567706.jpg" alt="" />
-              <title></title>
-              <p>Random Text</p>
+
+          <div>
+            <h2 className="category-header">Categories</h2>
+            <div className="game-category ps-4">Action</div>
+            <div className="game-category ps-4">Adventure</div>
+            <div className="game-category ps-4">Platform</div>
+            <div className="game-category ps-4">Puzzle</div>
+            <div className="game-category ps-4">Shooter</div>
+            <div className="game-category ps-4">RPG</div>
           </div>
         </div>
+        <div className="col-10">
+          <div className="games-container my-5">
+            {games.map((game, index) => (
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
+                    <img className="card-img-top" src={game.background_image} alt="Card image cap" />
+                    <div className="card-body">
+                      <h5 className="card-title">{game.name}</h5>
+                      <p className="card-text">
+                        {game.genres.map((genre) => (
+                          <span>{genre.name} </span>
+                        ))}
+                      </p>
+                      <button
+                        onClick={() => {
+                          handleCardFlip(index);
+                        }}
+                        className="btn btn-primary"
+                      >
+                        Flip Card
+                      </button>
+                    </div>
+                  </div>
+                  <div className="card flip-card-back">
+                    <h1 className="card-header">Game Title</h1>
+                    <p className="card-text">Achievement 1</p>
+                    <p className="card-text">Achievement 2</p>
+                    <button
+                      onClick={() => {
+                        handleCardFlip(index);
+                      }}
+                      className="btn btn-primary"
+                    >
+                      Flip Card
+                    </button>
+                    <a
+                      href="/achievements/2"
+                      className="btn btn-primary mt-2"
+                    >
+                      View Game Page
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

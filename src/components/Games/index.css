@@ -14,8 +14,90 @@
     align-items: center;
 }
 
-.game img{
-    height: 175px;
-    width: 200px;
-    margin-right: 2rem;
+.card-img-top{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
+
+.game-card{
+    color: white;
+    cursor: pointer;
+    background-color: rgb(3, 1, 20);
+    border-radius: 10px;
+    border: 2px solid rgba(2, 133, 159, 0.57);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.1s;
+}
+
+.game-card:hover{
+    transform: scale(1.05);
+    transition: all 0.1s;
+}
+
+.game-card h5{
+    margin-bottom: 1rem;
+}
+
+.game-category{
+    font-size: large;
+    margin-bottom: 0.3rem;
+}
+
+.games-container-title{
+    margin-left: 20rem;
+}
+
+.search-container{
+    margin-left: 20rem;
+    color: black;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.games-search{
+    display: block;
+  margin-bottom: 1rem;
+  width: 63vw;
+  padding-left: 20px;
+  height: 5vh;
+  border-radius: 99999px;
+  background-color: #E4E4E4;
+  color: black;
+  padding-left: 4rem;
+}
+
+.flip-card {
+    position: relative;
+    height: 400px;
+    width: 300px;
+    background-color: transparent;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+
+.flip-card-inner{
+    position: relative;
+    width: 100%;
+  height: 100%;
+    transition: transform 0.8s;
+  transform-style: preserve-3d;
+  transform: none;
+}
+
+/* .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  } */
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+  height: 100%;
+  }
+
+  .flip-card-back{
+    transform: rotateY(180deg);
+    border-radius: 10px;
+    border: 2px solid rgba(2, 133, 159, 0.57);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }

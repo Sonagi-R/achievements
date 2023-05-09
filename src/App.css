@@ -1,13 +1,25 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 2rem;
   text-align: center;
 }
 
 body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #0D1225;
   color: white;
+  transition: all 0.35s;
+}
+
+body::-webkit-scrollbar{
+  display: none;
 }
 
 .logo {
