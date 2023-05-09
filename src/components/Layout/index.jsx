@@ -7,12 +7,11 @@ import { themes } from "../../context";
 export default function Layout() {
   const [currentPage, setCurrentPage] = useState("");
   const { theme, toggleTheme } = themes();
-  console.log(theme.backgroundColor);
 
   useEffect(() => {
     document.body.style.backgroundColor = theme.backgroundColor;
     document.body.style.color = theme.color;
-    document.querySelector('h1').style.color = theme.color;
+    // document.querySelector('h1').style.color = theme.color;
     return () => {
       document.body.style.backgroundColor = "";
     };
