@@ -12,17 +12,27 @@ export default function landingPage() {
                 <div className='content-block'>
                     <h1>Welcome</h1>
                     <i className="fa-solid fa-solid-land fa-trophy trophy" title='trophy'></i>
-                    <p>It's time to achieve greatness.</p>
+                    <p className='landing-desc'>It's time to achieve perfection.</p>
                 </div>
             </div>
             <div className='img-2'>
                 <div className='content-block'>
-                    <h1>Get Gaming</h1>
+                    <h1>Get busy gaming</h1>
+                    <i className="fa-brands fa-solid-land fa-steam steam" title="steam"></i>
+                    <p className='landing-desc'>All games and achievements earned in one place.</p>
                 </div>
             </div>
             <div className='img-3'>
                 <div className='content-block'>
-                    <h1>Make Achievments mean something</h1>
+                    <h1>Make your steam achievements mean something!</h1>
+                    <p>
+                        <i className="fa-brands fa-solid-land fa-steam steam" title="steam"></i>
+                        <i class="fa-solid fa-solid-sign fa-plus"></i>
+                        <i className="fa-solid fa-solid-land fa-trophy trophy" title='trophy'></i>
+                        <i class="fa-solid fa-solid-sign fa-equals"></i>
+                        <i className="fa-solid fa-solid-land fa-cart-shopping cart" title="cart"></i>
+                    </p>
+                    <p className='landing-desc'>Earn credits for every achievement</p>
                 </div>
             </div>
         </AwesomeSlider>
