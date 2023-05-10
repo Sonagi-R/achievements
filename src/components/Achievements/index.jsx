@@ -42,10 +42,16 @@ export default function Achievements() {
           <p>On Fire</p>
           <p>Streak</p>
         </div>
-
-        <div className="panel"></div>
-        <div className="panel"></div>
-        <div className="panel"></div>
+<h5>Bounties</h5>
+        <div className="challenges panel d-flex align-items-center">
+        <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">500</h4>
+        </div>
+        <div className="challenges panel d-flex align-items-center">
+        <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">250</h4>
+        </div>
+        <div className="challenges panel d-flex align-items-center challenge-complete">
+        <i class="fa-solid fa-star me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">750</h4>
+        </div>
       </div>
       <div className="col-7 d-flex flex-column align-items-center">
         <div className="row d-flex justify-content-around gap-5 mb-4">

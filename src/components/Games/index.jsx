@@ -9,7 +9,7 @@ export default function Games() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // getAPI();
+    getAPI();
     syncGames();
   }, []);
 

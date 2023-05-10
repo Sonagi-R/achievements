@@ -40,6 +40,25 @@
     /* background: linear-gradient(135deg,rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)); */
 }
 
+.challenges{
+    background-color: rgba(228, 224, 224, 0.164);
+}
+
+.challenges-text{
+    font-size: 1rem;
+    width: 60%;
+    text-align: start;
+}
+
+.challenges-score{
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.challenge-complete{
+    background-color: rgba(5, 202, 81, 0.5);
+}
+
 .logo-container{
     height: 200px;
     width: 200px;
@@ -52,7 +71,8 @@
 }
 
 .metric-container{
-    height: 125px;
+    height: 100px;
+    font-size: 0.8rem;
     width: 225px;
     color: white;
     cursor: pointer;
