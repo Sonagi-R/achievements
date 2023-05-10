@@ -8,6 +8,7 @@ export default function Games() {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([])
   const [synced, setSynced] = useState(false)
+  const navigate = useNavigate();
 
   let x = [];
 
@@ -17,7 +18,7 @@ export default function Games() {
     //syncGames();
     //setGameArr(gameArr);
     //console.log("games", games)
-  const navigate = useNavigate();
+  }, []);
 
   useEffect(() => {
     // getAPI();
