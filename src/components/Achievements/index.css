@@ -1,0 +1,79 @@
+
+.panel{
+    height: 75px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(3, 1, 20);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* background: linear-gradient(135deg,rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)); */
+}
+
+.logo-container{
+    height: 200px;
+    width: 200px;
+    align-self: center;
+}
+
+.metric-container{
+    height: 125px;
+    width: 225px;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(3, 1, 20);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* background: linear-gradient(135deg,rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)); */
+}
+
+.recent-game{
+    width: 90%;
+    height: 550px;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(3, 1, 20);
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.recent-game-image-container{
+    padding: 20px;
+    padding-top: 25px;
+}
+
+.recent-game-image{
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/216/962/346/final-fantasy-vii-final-fantasy-vii-remake-video-games-video-game-art-digital-art-hd-wallpaper-preview.jpg');
+    height: 275px;
+    width: 900px;
+    background-size: cover;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.recent-game-details{
+    border-top: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 200px;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+
+.overflow-scroller{
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+
+.overflow-scroller::-webkit-scrollbar {
+    display: none;
+}

@@ -59,7 +59,7 @@ export default function Register() {
 
   return (
     <div className="d-flex mb-5 flex-column" id="register-page">
-      <h1 className="logo-title mb-5">Achievement</h1>
+      <h1 className="logo-title mb-5">Perfectionist</h1>
       <h2 className="mb-3">Register</h2>
       <form className="d-flex flex-column align-items-center">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-4 form-entry"></input>
