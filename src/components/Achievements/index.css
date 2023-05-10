@@ -1,4 +1,33 @@
 
+.primary-column{
+    border-right: 2px solid rgba(255,255,255,0.2);
+    height: 100vh;
+    padding: 0;
+}
+
+.achievement-categories{
+    text-align: start;
+}
+
+.achievement-category{
+    height: 80px;
+    line-height: 70px;
+    width: 100%;
+}
+
+.achievement-category-active{
+    background-color: rgb(3, 1, 20);
+    background: linear-gradient(90deg, rgb(3, 1, 20), rgba(255, 255, 255, 0.089));
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.secondary-column{
+    margin-left: 8rem;
+    margin-right: 1rem;
+}
+
 .panel{
     height: 75px;
     width: 100%;
@@ -15,6 +44,11 @@
     height: 200px;
     width: 200px;
     align-self: center;
+    border: 2px solid white;
+    position: relative;
+    border-radius: 50%;
+    line-height: 280px;
+    margin-bottom: 50px;
 }
 
 .metric-container{
@@ -55,6 +89,15 @@
     margin: 0 auto;
     border-radius: 20px;
 }
+
+.recent-game-button{
+    width: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.452);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: 2px solid rgba(2, 133, 159, 0.57);
+    background-color: rgba(3, 1, 20, 0.514);
+}
+
 
 .recent-game-details{
     border-top: 2px solid rgba(255,255,255,0.2);
