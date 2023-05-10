@@ -24,7 +24,9 @@ export default function Layout() {
 
   const handleLogout = async() => {
     await fetch("http://localhost:4000/users/logout", {credentials: "include"})
-    localStorage.clear()
+    localStorage.user_id = ""
+    localStorage.steam_id = ""
+    localStorage.username = ""
     window.location.assign("/login")
   }
 
