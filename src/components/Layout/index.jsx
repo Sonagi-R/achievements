@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
-import { themes } from "../../context";
+import { themes, user } from "../../context";
 
 export default function Layout() {
   const [currentPage, setCurrentPage] = useState("");
@@ -21,9 +21,16 @@ export default function Layout() {
     setCurrentPage(window.location.pathname);
   }, [useNavigate()]);
 
+
+  const handleLogout = async() => {
+    await fetch("http://localhost:4000/users/logout", {credentials: "include"})
+    localStorage.clear()
+    window.location.assign("/login")
+  }
+
   return (
     <>
-      <nav className="d-flex justify-content-around align-items-start">
+      <nav className="d-flex justify-content-between align-items-start">
         <h2 className="nav-logo">Logo</h2>
         {currentPage == "/achievements" ? (
           <>
@@ -38,9 +45,9 @@ export default function Layout() {
                 <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
               </NavLink>
             </div>
-            <div className="d-flex gap-3">
-              <h2>Username</h2>
-              <button id="logout">Logout</button>
+            <div className="nav-right d-flex gap-3">
+              <h2>{localStorage.username}</h2>
+              <button onClick={handleLogout} id="logout">Logout</button>
             </div>
           </>
         ) : (
@@ -60,9 +67,9 @@ export default function Layout() {
               <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
               </NavLink>
             </div>
-            <div className="d-flex gap-3">
-              <h2>Username</h2>
-              <button id="logout">Logout</button>
+            <div className="nav-right d-flex gap-3">
+              <h2>{localStorage.username}</h2>
+              <button onClick={handleLogout} id="logout">Logout</button>
             </div>
           </>
         ) : (
@@ -81,9 +88,9 @@ export default function Layout() {
               <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
               </NavLink>
             </div>
-            <div className="d-flex gap-3">
-              <h2>Username</h2>
-              <button id="logout">Logout</button>
+            <div className="nav-right d-flex gap-3">
+              <h2>{localStorage.username}</h2>
+              <button onClick={handleLogout} id="logout">Logout</button>
             </div>
           </>
         ) : (

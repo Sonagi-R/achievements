@@ -7,20 +7,20 @@ export default function Games() {
   const [filteredGames, setFilteredGames] = useState([])
 
   useEffect(() => {
-    //getAPI();
+    getAPI();
     syncGames();
   }, []);
 
   const getAPI = async () => {
     const response = await fetch("https://api.rawg.io/api/games?key=db170b4f923142118fbbdc3e17c16422&&platforms=1");
     const data = await response.json();
-    console.log(data.results);
+    // console.log(data.results);
 
     setGames(data.results);
     setFilteredGames(data.results)
 
     for (let i = 0; i < data.results.length; i++) {
-      console.log(data.results[i].name);
+      // console.log(data.results[i].name);
     }
   };
 
@@ -31,7 +31,7 @@ export default function Games() {
 
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
-    console.log(allCards[1].style.transform);
+    // console.log(allCards[1].style.transform);
       if (!allCards[index].style.transform || allCards[index].style.transform == "none") {
         allCards[index].style.transform = "rotateY(180deg)";
       } else {
@@ -43,11 +43,11 @@ export default function Games() {
     async function syncGames() {
         const user_id = localStorage.getItem("user_id");
         const user_Steam_id = localStorage.getItem("steam_id");
-        console.log(user_id, user_Steam_id)
+        // console.log(user_id, user_Steam_id)
         //1. get games
         const fetchGames = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
         const gameData = await fetchGames.json();
-        console.log(gameData.response.games);
+        // console.log(gameData.response.games);
 
         //2. store games
         let gameArr = [];
@@ -129,7 +129,7 @@ export default function Games() {
     <>
       <h1 className="text-center">Dashboard</h1>
       <h2 className="text-start games-container-title">Popular Games</h2>
-      {/* might move search bar above first category to avoid it looking to long in current position */
+      {/* might move search bar above first category to avoid it looking to long in current position */}
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
         <input placeholder="Search For a Game" onChange={handleSearch} className="games-search color-black" type="text" />

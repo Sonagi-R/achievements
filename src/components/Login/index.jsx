@@ -39,9 +39,11 @@ export default function Login() {
       if (user.ok) {
         console.log(userdata)
       setSteamId(userdata.steam_id);
-      setUser_id(userdata.user_id);
+        setUser_id(userdata.user_id);
+        setUsername(userdata.username)
       localStorage.setItem("user_id", userdata.user_id);
         localStorage.setItem("steam_id", userdata.steam_id);
+        localStorage.setItem("username", userdata.username);
         window.location.assign("/games")
       }
       //getAllData([userdata.user_id, userdata.steam_id]);

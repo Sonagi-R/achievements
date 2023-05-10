@@ -3,20 +3,20 @@ import './index.css'
 import { user } from "../../context";
 
 export default function Register() {
-  const { username, setUsername, email, setEmail, password, setPassword, steamId, setSteamId } = user();
+  const { username, setUsername, password, setPassword, steamId, setSteamId } = user();
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
+    console.log("console log inside handler" + username)
   };
+
+  console.log("console log out of handler" + username);
 
   const steamIdHandler = (e) => {
     setSteamId(e.target.value)
   }
 
-  const emailHandler = (e) => {
-    setEmail(e.target.value);
-  };
 
   const passwordHandler = (e) => {
     setPassword(e.target.value);
@@ -34,12 +34,12 @@ export default function Register() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          steam_id: steamId,
           username: username,
+          steam_id: steamId,
           password: password
         }),
       };
-      //console.log(steamId, username, password)
+      console.log(steamId, username, password)
       const res = await fetch("http://localhost:4000/users/register", options);
 
       if (res.ok) {

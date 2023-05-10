@@ -1,7 +1,9 @@
 import React from "react";
 import "./index.css";
 
+
 export default function Achievements() {
+
   return (
     <div className="row">
       <div className="col-3">

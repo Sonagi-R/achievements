@@ -12,14 +12,20 @@ nav{
 
 .nav-logo{
    text-align: start;
+   width: 300px;
 }
 
 .nav-links{
-    margin-left: 10%;
+    width: 300px;
+}
+
+.nav-right{
+    width: 250px;
 }
 
 nav h2{
     font-size: 1.5rem;
+    line-height: 40px;
 }
 
 #logout{
