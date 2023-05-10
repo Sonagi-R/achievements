@@ -1,7 +1,9 @@
 import React from "react";
 import "./index.css";
 
+
 export default function Achievements() {
+
   return (
     <div className="row">
       <div className="col-3">
@@ -42,7 +44,9 @@ export default function Achievements() {
         </div>
         <div className="recent-game row d-flex flex-column align-items-center gap-2">
           <div className="recent-game-image-container">
-            <div className="recent-game-image"></div>
+            <div className="recent-game-image">
+              <h2>Final Fantasy 7 Remake</h2>
+            </div>
           </div>
           <div className="recent-game-details">
             <div className="overflow-scroller">

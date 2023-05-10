@@ -1,7 +1,9 @@
 import React from "react";
 import "./index.css";
 
+
 export default function Achievement() {
+
   return (
     <div>
       <div className="pseudo-background"></div>
