@@ -129,7 +129,7 @@ export default function Games() {
     <>
       <h1 className="text-center">Dashboard</h1>
       <h2 className="text-start games-container-title">Popular Games</h2>
-      {/* might move search bar above first category to avoid it looking to long in current position */
+      {/* might move search bar above first category to avoid it looking to long in current position */}
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
         <input placeholder="Search For a Game" onChange={handleSearch} className="games-search color-black" type="text" />
