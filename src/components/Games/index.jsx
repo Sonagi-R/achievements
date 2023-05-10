@@ -1,17 +1,33 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./index.css";
+//import { GamesCard } from '../GamesCard'
 import { useNavigate } from "react-router-dom";
 
 export default function Games() {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([])
+  const [synced, setSynced] = useState(false)
+
+  let x = [];
+
+  useEffect(() => {
+    //getAPI();
+    getOwnedGames()
+    //syncGames();
+    //setGameArr(gameArr);
+    //console.log("games", games)
   const navigate = useNavigate();
 
   useEffect(() => {
-    getAPI();
-    syncGames();
+    // getAPI();
+    getOwnedGames()
+    //syncGames();
   }, []);
+
+  useEffect(() => {
+    console.log("games", games)
+  }, [games]);
 
   const getAPI = async () => {
     const response = await fetch("https://api.rawg.io/api/games?key=db170b4f923142118fbbdc3e17c16422&&platforms=1");
@@ -41,6 +57,22 @@ export default function Games() {
     }
     };
 
+    const getOwnedGames = async () => {
+      const user_id = localStorage.getItem("user_id");
+      const user_Steam_id = localStorage.getItem("steam_id");
+      const response = await fetch(`http://localhost:4000/games/${user_id}`);
+      const data = await response.json();
+      console.log(data);
+      if (!('error' in data)) {
+        setGames(data);
+        console.log(games)
+        //return <h2><em>You haven't Synced your Games yet!</em></h2>
+        
+      } else {
+        //return <h2><em>You haven't Synced your Games yet!</em></h2>
+      }
+      //setFilteredGames(data.results)
+    }
 
     async function syncGames() {
         const user_id = localStorage.getItem("user_id");
@@ -59,7 +91,7 @@ export default function Games() {
         let options;
         let index = 0;
         const operation = await gameData.response.games.map(async (game) => {
-            console.log(index)
+            //console.log(index)
 
             text = game.name.split("");
             simpleName = game.name.split("");
@@ -76,13 +108,13 @@ export default function Games() {
             simpleName = simpleName.join("");
             simpleNameDashed = simpleNameDashed.join("");
             //simpleName = text.replace("/(™|:|®|©)/", "");
-            console.log(simpleName, simpleNameDashed)
+            //console.log(simpleName, simpleNameDashed)
 
             //1.5 get additonal game info
             try {
                 const rawrAdditionalInfo = await fetch(`https://api.rawg.io/api/games/${simpleNameDashed}?key=db170b4f923142118fbbdc3e17c16422&platforms=1`);
                 const rawrAdditionalData = await rawrAdditionalInfo.json();
-                console.log(rawrAdditionalData);
+                //console.log(rawrAdditionalData);
 
                 //2. store games
                 options = {
@@ -105,8 +137,12 @@ export default function Games() {
                     const stashGames = await fetch(`http://localhost:4000/games/new`, options);
                     const storedGames = await stashGames.json();
      
-                    console.log(storedGames, game.name, index)
+                    //console.log(storedGames, game.name, index)
                     gameArr.push(storedGames)
+                    x.push(storedGames)
+                    //console.log("gamearr", gameArr)
+                    setGames(gameArr);
+                    console.log("games", games)          
                 } catch (err) {
                     console.log(err);
                 }
@@ -117,9 +153,15 @@ export default function Games() {
 
             index++;
         })
+
+        return gameArr;
+    }
+
+    /*const setGameArr = (gameArr) => {
         console.log("gamearr", gameArr)
         setGames(gameArr);
         console.log("games", games)
+
     }
 
 
@@ -141,6 +183,7 @@ export default function Games() {
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
         <input placeholder="Search For a Game" onChange={handleSearch} className="games-search color-black" type="text" />
+        <button onClick={syncGames}>Sync Games</button>
       </div>
       <div className="row games-main">
         <div className="col-2 text-start">
@@ -176,13 +219,14 @@ export default function Games() {
         </div>
         <div className="col-10">
           <div className="games-container my-5">
-            {filteredGames.map((game, index) => (
+          <div className="games-container my-5">
+            {games.map((game, index) => (
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
                     <img className="card-img-top" src={game.background_image} alt="Card image cap" />
                     <div className="card-body">
-                      <h5 className="card-title">{game.name}</h5>
+                      <h5 className="card-title">{game.game_name}</h5>
                       <p className="card-text">
                         {game.genres.map((genre) => (
                           <span>{genre.name} </span>
@@ -199,7 +243,7 @@ export default function Games() {
                     </div>
                   </div>
                   <div className="card flip-card-back">
-                    <h1 className="card-header">Game Title</h1>
+                    <h1 className="card-header">{game.game_name}</h1>
                     <p className="card-text">Achievement 1</p>
                     <p className="card-text">Achievement 2</p>
                     <button
@@ -220,6 +264,7 @@ export default function Games() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>
