@@ -1,13 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Games() {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([])
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getAPI();
+    // getAPI();
     syncGames();
   }, []);
 
@@ -36,7 +38,7 @@ export default function Games() {
         allCards[index].style.transform = "rotateY(180deg)";
       } else {
         allCards[index].style.transform = "none";
-      }
+    }
     };
 
 
@@ -124,6 +126,12 @@ export default function Games() {
     /*useEffect(() => {
         syncGames();
     }, [])*/
+  
+    useEffect(() => {
+      if (localStorage.user_id === "") {
+        navigate("/login")
+      }
+    }, [localStorage.user_id, navigate])
 
   return (
     <>

@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Achievements() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.user_id === "") {
+      navigate("/login")
+    }
+  }, [localStorage.user_id, navigate])
 
   return (
     <div className="row">
