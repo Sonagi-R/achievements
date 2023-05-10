@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 //import { GamesCard } from '../GamesCard'
 export default function Games() {
@@ -8,6 +9,12 @@ export default function Games() {
   const [synced, setSynced] = useState(false)
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.user_id === "") {
+      navigate("/login")
+    }
+  }, [localStorage.user_id, navigate])
 
   let x = [];
 
@@ -24,7 +31,7 @@ export default function Games() {
     getOwnedGames()
     //syncGames();
   }, []);
-  
+
   useEffect(() => {
     console.log("games", games)
   }, [games]);
