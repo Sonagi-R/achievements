@@ -2,52 +2,36 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./index.css";
 //import { GamesCard } from '../GamesCard'
-import { useNavigate } from "react-router-dom";
-
 export default function Games() {
   const [games, setGames] = useState([]);
   const [filteredGames, setFilteredGames] = useState([])
   const [synced, setSynced] = useState(false)
-
   let x = [];
 
-  // useEffect(() => {
-  //   //getAPI();
-  //   getOwnedGames()
-  //   //syncGames();
-  //   //setGameArr(gameArr);
-  //   //console.log("games", games)
-  // })
-  const navigate = useNavigate();
-
   useEffect(() => {
-    // getAPI();
+    //getAPI();
     getOwnedGames()
     //syncGames();
+    //setGameArr(gameArr);
+    //console.log("games", games)
   }, []);
-
+  
   useEffect(() => {
     console.log("games", games)
   }, [games]);
-
   const getAPI = async () => {
     const response = await fetch("https://api.rawg.io/api/games?key=db170b4f923142118fbbdc3e17c16422&&platforms=1");
     const data = await response.json();
     // console.log(data.results);
-
     setGames(data.results);
     setFilteredGames(data.results)
-
     for (let i = 0; i < data.results.length; i++) {
       // console.log(data.results[i].name);
     }
   };
-
-
   const handleSearch = (e) => {
     setFilteredGames(games.filter(game => game.name.toLowerCase().includes(e.target.value.toLowerCase())))
   }
-
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
     // console.log(allCards[1].style.transform);
@@ -55,9 +39,8 @@ export default function Games() {
         allCards[index].style.transform = "rotateY(180deg)";
       } else {
         allCards[index].style.transform = "none";
-    }
+      }
     };
-
     const getOwnedGames = async () => {
       const user_id = localStorage.getItem("user_id");
       const user_Steam_id = localStorage.getItem("steam_id");
@@ -74,7 +57,6 @@ export default function Games() {
       }
       //setFilteredGames(data.results)
     }
-
     async function syncGames() {
         const user_id = localStorage.getItem("user_id");
         const user_Steam_id = localStorage.getItem("steam_id");
@@ -83,7 +65,6 @@ export default function Games() {
         const fetchGames = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
         const gameData = await fetchGames.json();
         // console.log(gameData.response.games);
-
         //2. store games
         let gameArr = [];
         let text;
@@ -93,7 +74,6 @@ export default function Games() {
         let index = 0;
         const operation = await gameData.response.games.map(async (game) => {
             //console.log(index)
-
             text = game.name.split("");
             simpleName = game.name.split("");
             simpleNameDashed = game.name.split("");
@@ -110,13 +90,11 @@ export default function Games() {
             simpleNameDashed = simpleNameDashed.join("");
             //simpleName = text.replace("/(™|:|®|©)/", "");
             //console.log(simpleName, simpleNameDashed)
-
             //1.5 get additonal game info
             try {
                 const rawrAdditionalInfo = await fetch(`https://api.rawg.io/api/games/${simpleNameDashed}?key=db170b4f923142118fbbdc3e17c16422&platforms=1`);
                 const rawrAdditionalData = await rawrAdditionalInfo.json();
                 //console.log(rawrAdditionalData);
-
                 //2. store games
                 options = {
                     method: "POST",
@@ -147,35 +125,18 @@ export default function Games() {
                 } catch (err) {
                     console.log(err);
                 }
-
             } catch (err) {
                 console.log(err);
             }
-
             index++;
         })
-
         return gameArr;
     }
-
     /*const setGameArr = (gameArr) => {
         console.log("gamearr", gameArr)
         setGames(gameArr);
         console.log("games", games)
-
-    }
-
-
-    /*useEffect(() => {
-        syncGames();
-    }, [])*/
-  
-    useEffect(() => {
-      if (localStorage.user_id === "") {
-        navigate("/login")
-      }
-    }, [localStorage.user_id, navigate])
-
+    }*/
   return (
     <>
       <h1 className="text-center">Dashboard</h1>
@@ -197,7 +158,6 @@ export default function Games() {
             <div className="game-category ps-4">Shooter</div>
             <div className="game-category ps-4">RPG</div>
           </div>
-
           <div className="mb-5">
             <h2 className="category-header">Categories</h2>
             <div className="game-category ps-4">Action</div>
@@ -207,7 +167,6 @@ export default function Games() {
             <div className="game-category ps-4">Shooter</div>
             <div className="game-category ps-4">RPG</div>
           </div>
-
           <div>
             <h2 className="category-header">Categories</h2>
             <div className="game-category ps-4">Action</div>
