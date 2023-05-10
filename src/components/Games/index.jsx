@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./index.css";
 //import { GamesCard } from '../GamesCard'
+import { useNavigate } from "react-router-dom";
 
 export default function Games() {
   const [games, setGames] = useState([]);
@@ -16,6 +17,12 @@ export default function Games() {
     //syncGames();
     //setGameArr(gameArr);
     //console.log("games", games)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // getAPI();
+    getOwnedGames()
+    //syncGames();
   }, []);
 
   useEffect(() => {
@@ -47,7 +54,7 @@ export default function Games() {
         allCards[index].style.transform = "rotateY(180deg)";
       } else {
         allCards[index].style.transform = "none";
-      }
+    }
     };
 
     const getOwnedGames = async () => {
@@ -154,7 +161,19 @@ export default function Games() {
         console.log("gamearr", gameArr)
         setGames(gameArr);
         console.log("games", games)
-    }*/
+
+    }
+
+
+    /*useEffect(() => {
+        syncGames();
+    }, [])*/
+  
+    useEffect(() => {
+      if (localStorage.user_id === "") {
+        navigate("/login")
+      }
+    }, [localStorage.user_id, navigate])
 
   return (
     <>
