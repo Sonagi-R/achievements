@@ -52,7 +52,7 @@ export default function Login() {
     };
     const userdata = await loginUser();
     console.log(userdata)
-    getAllData(userdata);
+    //getAllData(userdata);
   }
   const getAllData = async (userData) => {
     const userId = userData[0];

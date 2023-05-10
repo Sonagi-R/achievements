@@ -7,7 +7,8 @@ export default function Games() {
   const [filteredGames, setFilteredGames] = useState([])
 
   useEffect(() => {
-    getAPI();
+    //getAPI();
+    syncGames();
   }, []);
 
   const getAPI = async () => {
@@ -38,16 +39,87 @@ export default function Games() {
       }
     };
 
-    // async function syncGames() {
-    //     const user_id = localStorage.getItem("user_id");
-    //     const user_Steam_id = localStorage.getItem("steam_id");
-    //     console.log(user_id, user_Steam_id)
-    //     const games = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
-    //     const gameData = await games.json();
-    //     console.log(gameData);
-    //     console.log(gameData.response.games);
-    //     setGamesData(gameData.response.games);
-    // }
+
+    async function syncGames() {
+        const user_id = localStorage.getItem("user_id");
+        const user_Steam_id = localStorage.getItem("steam_id");
+        console.log(user_id, user_Steam_id)
+        //1. get games
+        const fetchGames = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
+        const gameData = await fetchGames.json();
+        console.log(gameData.response.games);
+
+        //2. store games
+        let gameArr = [];
+        let text;
+        let simpleName;
+        let simpleNameDashed;
+        let options;
+        let index = 0;
+        const operation = await gameData.response.games.map(async (game) => {
+            console.log(index)
+
+            text = game.name.split("");
+            simpleName = game.name.split("");
+            simpleNameDashed = game.name.split("");
+            for (let i = 0; i < text.length; i++) {
+                simpleName[i] = text[i].replace("™", "");
+                simpleName[i] = simpleName[i].replace(":", "");
+                simpleName[i] = simpleName[i].replace("®", "");
+                simpleName[i] = simpleName[i].replace("©", "");
+                simpleName[i] = simpleName[i].replace("®", "");
+                simpleName[i] = simpleName[i].replace("'", "");
+                simpleNameDashed[i] = simpleName[i].replace(" ", "-");
+            }
+            simpleName = simpleName.join("");
+            simpleNameDashed = simpleNameDashed.join("");
+            //simpleName = text.replace("/(™|:|®|©)/", "");
+            console.log(simpleName, simpleNameDashed)
+
+            //1.5 get additonal game info
+            try {
+                const rawrAdditionalInfo = await fetch(`https://api.rawg.io/api/games/${simpleNameDashed}?key=db170b4f923142118fbbdc3e17c16422&platforms=1`);
+                const rawrAdditionalData = await rawrAdditionalInfo.json();
+                console.log(rawrAdditionalData);
+
+                //2. store games
+                options = {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    //headers: { "Accept": "application/json" },
+                    credentials: "include",
+                    body: JSON.stringify({ 
+                    app_id: game.appid, 
+                    game_name: game.name,
+                    playtime: game.playtime_windows_forever, 
+                    user_id: user_id,
+                    game_description: rawrAdditionalData.description,
+                    genres: rawrAdditionalData.genres,
+                    background_image: rawrAdditionalData.background_image  
+                    }),
+                };
+                
+                try {
+                    const stashGames = await fetch(`http://localhost:4000/games/new`, options);
+                    const storedGames = await stashGames.json();
+     
+                    console.log(storedGames, game.name, index)
+                    gameArr.push(storedGames)
+                } catch (err) {
+                    console.log(err);
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+
+            index++;
+        })
+        console.log("gamearr", gameArr)
+        setGames(gameArr);
+        console.log("games", games)
+    }
+
 
     /*useEffect(() => {
         syncGames();
@@ -57,18 +129,7 @@ export default function Games() {
     <>
       <h1 className="text-center">Dashboard</h1>
       <h2 className="text-start games-container-title">Popular Games</h2>
-      {/* might move search bar above first category to avoid it looking to long in current position */}
-
-      {/* <button onClick={syncGames}>Sync Your Games</button>
-          {gamesData && Array.isArray(gamesData) &&
-            gamesData.map((game) => (
-            <div className="flashcard" key={game.name}>
-                <img src="https://assets-prd.ignimgs.com/2021/12/08/witcher3-1638987659679.jpg" alt="" />
-                <title>{game.name}</title>
-                <p>{game.name}</p>
-            </div>
-          ))} */}
-      
+      {/* might move search bar above first category to avoid it looking to long in current position */
       <div className="position-relative search-container">
         <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
         <input placeholder="Search For a Game" onChange={handleSearch} className="games-search color-black" type="text" />
