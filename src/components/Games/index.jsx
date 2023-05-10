@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./index.css";
 //import { GamesCard } from '../GamesCard'
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function Games() {
   const [games, setGames] = useState([]);
@@ -66,6 +67,7 @@ export default function Games() {
       console.log(data);
       if (!('error' in data)) {
         setGames(data);
+        setFilteredGames(data)
         console.log(games)
         //return <h2><em>You haven't Synced your Games yet!</em></h2>
         
@@ -244,7 +246,7 @@ export default function Games() {
                     </div>
                   </div>
                   <div className="card flip-card-back">
-                    <h1 className="card-header">{game.game_name}</h1>
+                    <h3 className="card-header">{game.game_name}</h3>
                     <p className="card-text">Achievement 1</p>
                     <p className="card-text">Achievement 2</p>
                     <button
@@ -256,11 +258,10 @@ export default function Games() {
                       Flip Card
                     </button>
                     <a
-                      href="/achievements/2"
                       className="btn btn-primary mt-2"
-                    >
-                      View Game Page
-                    </a>
+                    ><Link to={`/games/${game.app_id}`}>
+                      View Game Achievements
+                    </Link></a>
                   </div>
                 </div>
               </div>
