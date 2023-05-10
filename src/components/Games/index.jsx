@@ -11,12 +11,13 @@ export default function Games() {
 
   let x = [];
 
-  useEffect(() => {
-    //getAPI();
-    getOwnedGames()
-    //syncGames();
-    //setGameArr(gameArr);
-    //console.log("games", games)
+  // useEffect(() => {
+  //   //getAPI();
+  //   getOwnedGames()
+  //   //syncGames();
+  //   //setGameArr(gameArr);
+  //   //console.log("games", games)
+  // })
   const navigate = useNavigate();
 
   useEffect(() => {
