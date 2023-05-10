@@ -23,19 +23,25 @@ export default function Layout() {
 
   return (
     <>
-      <nav>
+      <nav className="d-flex justify-content-around align-items-start">
+        <h2 className="nav-logo">Logo</h2>
         {currentPage == "/achievements" ? (
           <>
-            <NavLink to="/games" className="nav-component">
-              <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
-            </NavLink>
-            <NavLink to="/achievements" className="nav-component active-nav">
-              <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
-            </NavLink>
-            <NavLink to="/store" className="nav-component">
-              <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
-            </NavLink>
-            
+            <div className="nav-links">
+              <NavLink to="/games" className="nav-component">
+                <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
+              </NavLink>
+              <NavLink to="/achievements" className="nav-component active-nav">
+                <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
+              </NavLink>
+              <NavLink to="/store" className="nav-component">
+                <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
+              </NavLink>
+            </div>
+            <div className="d-flex gap-3">
+              <h2>Username</h2>
+              <button id="logout">Logout</button>
+            </div>
           </>
         ) : (
           ""
@@ -43,6 +49,7 @@ export default function Layout() {
 
         {currentPage == "/games" ? (
           <>
+            <div className="nav-links">
             <NavLink to="/achievements" className="nav-component">
               <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
             </NavLink>
@@ -51,13 +58,19 @@ export default function Layout() {
             </NavLink>
             <NavLink to="/store" className="nav-component">
               <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
-            </NavLink>
+              </NavLink>
+            </div>
+            <div className="d-flex gap-3">
+              <h2>Username</h2>
+              <button id="logout">Logout</button>
+            </div>
           </>
         ) : (
           ""
         )}
         {currentPage == "/store" ? (
           <>
+            <div className="nav-links">
             <NavLink to="/achievements" className="nav-component active-nav">
               <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
             </NavLink>
@@ -66,12 +79,25 @@ export default function Layout() {
             </NavLink>
             <NavLink to="/games" className="nav-component active-nav">
               <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
-            </NavLink>
+              </NavLink>
+            </div>
+            <div className="d-flex gap-3">
+              <h2>Username</h2>
+              <button id="logout">Logout</button>
+            </div>
           </>
         ) : (
           ""
         )}
-        {theme.backgroundColor == '#0D1225' ?<button className="toggle-button" onClick={toggleTheme}><i className="toggle-circle"></i></button>: <button className="toggle-button-light" onClick={toggleTheme}><i className="toggle-circle-light"></i></button>}
+        {theme.backgroundColor == "#0D1225" ? (
+          <button className="toggle-button" onClick={toggleTheme}>
+            <i className="toggle-circle"></i>
+          </button>
+        ) : (
+          <button className="toggle-button-light" onClick={toggleTheme}>
+            <i className="toggle-circle-light"></i>
+          </button>
+        )}
       </nav>
       <main>
         <Outlet />
