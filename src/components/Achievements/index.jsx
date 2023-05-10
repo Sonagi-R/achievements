@@ -47,10 +47,10 @@ export default function Achievements() {
         <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">500</h4>
         </div>
         <div className="challenges panel d-flex align-items-center">
-        <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">250</h4>
+        <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">SpeedRun Sonic Generations!</h4><h4 className="challenges-score">350</h4>
         </div>
         <div className="challenges panel d-flex align-items-center challenge-complete">
-        <i class="fa-solid fa-star me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">750</h4>
+        <i class="fa-solid fa-star me-3"></i><h4 className="challenges-text">Play 1 hour of a game you haven't played!</h4><h4 className="challenges-score">150</h4>
         </div>
       </div>
       <div className="col-7 d-flex flex-column align-items-center">
