@@ -78,6 +78,27 @@ export default function Layout() {
         ) : (
           ""
         )}
+         {currentPage == "/achievements/2" ? (
+          <>
+            <div className="nav-links">
+              <NavLink to="/games" className="nav-component">
+                <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
+              </NavLink>
+              <NavLink to="/achievements" className="nav-component">
+                <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
+              </NavLink>
+              <NavLink to="/store" className="nav-component">
+                <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
+              </NavLink>
+            </div>
+            <div className="nav-right d-flex gap-3">
+              <h2>{localStorage.username}</h2>
+              <button onClick={handleLogout} id="logout">Logout</button>
+            </div>
+          </>
+        ) : (
+          ""
+        )}
 
         {currentPage == "/games" ? (
           <>

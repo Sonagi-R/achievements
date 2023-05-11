@@ -35,7 +35,7 @@ export default function storePage() {
         <div className='store-container'>
         {items.map(item => (
         <div className="card p-0 store-card " style={{ width: "18rem" }}>
-            <img className="card-img-top" src={item.item_icon} alt="store image" />
+            <img className="store-item-image card-img-top h-50" src={item.item_icon} alt="store image" />
             <div className="card-body">
                 <h5 className="card-title">{item.item_name}</h5>
                 <p className="card-text">
