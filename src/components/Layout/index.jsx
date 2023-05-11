@@ -3,10 +3,12 @@ import { NavLink, Outlet } from "react-router-dom";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
 import { themes, user } from "../../context";
+import logo from '../../assets/logo.png'
 
 export default function Layout() {
   const [currentPage, setCurrentPage] = useState("");
   const { theme, toggleTheme } = themes();
+  const [currency, setCurrency] = useState();
 
   useEffect(() => {
     document.body.style.backgroundColor = theme.backgroundColor;
@@ -21,6 +23,14 @@ export default function Layout() {
     setCurrentPage(window.location.pathname);
   }, [useNavigate()]);
 
+  useEffect(() => {
+    getCurrency();
+  }, []);
+
+  useEffect(() => {
+    setCurrentPage(window.location.pathname);
+  }, [useNavigate()]);
+
 
   const handleLogout = async() => {
     await fetch("http://localhost:4000/users/logout", {credentials: "include"})
@@ -30,10 +40,22 @@ export default function Layout() {
     window.location.assign("/login")
   }
 
+  const getCurrency = async () => {
+    const options = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include"
+    };
+    const response = await fetch("http://localhost:4000/users/current", options)
+    const data = await response.json();
+    setCurrency(data.currency);
+    console.log(data)
+  }
+
   return (
     <>
       <nav className="d-flex justify-content-between align-items-start">
-        <h2 className="nav-logo">Logo</h2>
+        <h2 className="nav-logo"><img src={logo}/></h2>
         {currentPage == "/achievements" ? (
           <>
             <div className="nav-links">
@@ -48,6 +70,7 @@ export default function Layout() {
               </NavLink>
             </div>
             <div className="nav-right d-flex gap-3">
+              <h2>{currency}¢</h2>
               <h2>{localStorage.username}</h2>
               <button onClick={handleLogout} id="logout">Logout</button>
             </div>
@@ -91,6 +114,7 @@ export default function Layout() {
               </NavLink>
             </div>
             <div className="nav-right d-flex gap-3">
+              <h2>{currency}¢</h2>
               <h2>{localStorage.username}</h2>
               <button onClick={handleLogout} id="logout">Logout</button>
             </div>
@@ -112,6 +136,7 @@ export default function Layout() {
               </NavLink>
             </div>
             <div className="nav-right d-flex gap-3">
+              <h2>{currency}¢</h2>
               <h2>{localStorage.username}</h2>
               <button onClick={handleLogout} id="logout">Logout</button>
             </div>

@@ -121,6 +121,7 @@ export default function GameAchievement() {
 
       //3. store achievements
       let achievement_description;
+      let currency = 0;
       achievementsData.playerstats.achievements.map(async (achievement, index) => {
         if (achievement.apiname == achievementInfoData.game.availableGameStats.achievements[index].name
           && achievement.achieved == 1) {
@@ -147,8 +148,26 @@ export default function GameAchievement() {
           const stashAchievements = await fetch(`http://localhost:4000/achievements/new`, options)
           const storedAchievements = await stashAchievements.json();
           console.log(storedAchievements)
+          currency += 200;
+
+          //4. update currency for user
+          console.log(currency)
+          options = {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({
+              newCurrency: currency
+            }),
+          };
+
+          const updateCurrency = await fetch(`http://localhost:4000/users/updatecurrency`, options)
+          const currencyData = await updateCurrency.json();
+          console.log(currencyData)
         }
       })
+
+  
     }
 
     function displayAchievements() {
