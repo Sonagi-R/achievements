@@ -201,36 +201,49 @@ export default function Games() {
           <div className="games-container my-5">
             {filteredGames.map((game, index) => (
               <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
-                    <img className="card-img-top" src={game.background_image} alt="Card image cap" />
-                    <div className="card-body">
-                      <h5 className="card-title">{game.game_name}</h5>
-                      <p className="card-text">
-                        {game.genres.map((genre) => (
-                          <span>{genre.name} </span>
-                        ))}
-                      </p>
-
-                      <button
-                        onClick={() => {
-                          handleCardFlip(index);
-                        }}
-                        className="btn btn-primary"
-                      >
-                        Flip Card
-                      </button>
-                      <button
-                        className="btn btn-primary mt-2"
-                        onClick={() => {
-                          handleAchievementLink(game.app_id, game.game_description, game.game_name, game.genres, game.background_image);
-                        }}
-                      >
-                        View Game Achievements
-                      </button>
-                    </div>
+              <div className="flip-card-inner">
+                <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
+                  <img className="card-img-top" src={game.background_image} alt="Card image cap" />
+                  <div className="card-body">
+                    <h5 className="card-title">{game.game_name}</h5>
+                    <p className="card-text">
+                      {game.genres.map((genre) => (
+                        <span>{genre.name} </span>
+                      ))}
+                    </p>
+                    <button
+                      onClick={() => {
+                        handleCardFlip(index);
+                      }}
+                      className="btn btn-primary"
+                    >
+                      Flip Card
+                    </button>
                   </div>
                 </div>
+                <div className="card flip-card-back">
+                  <h3 className="card-header">{game.game_name}</h3>
+                  <p className="card-text">Achievement 1</p>
+                  <p className="card-text">Achievement 2</p>
+                  <button
+                    onClick={() => {
+                      handleCardFlip(index);
+                    }}
+                    className="btn btn-primary"
+                  >
+                    Flip Card
+                  </button>
+                  <button
+                    className="btn btn-primary mt-2"
+                    onClick={() => {
+                      handleAchievementLink(game.app_id, game.game_description, game.game_name, game.genres, game.background_image);
+                    }}
+                  >
+                    View Game Achievements
+                  </button>
+                </div>
+              </div>
+            </div>
               ))}
             </div>
           </div>
