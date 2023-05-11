@@ -16,6 +16,7 @@ body{
   background-color: #0D1225;
   color: white;
   transition: all 0.35s;
+  overflow: hidden;
 }
 
 body::-webkit-scrollbar{

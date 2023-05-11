@@ -59,6 +59,14 @@ export default function Games() {
         allCards[index].style.transform = "none";
       }
   };
+
+  const handleAchievementLink = (index, app_id) => {
+    localStorage.setItem("game_description", games[index].game_description)
+    localStorage.setItem("game_name", games[index].game_name)
+    localStorage.setItem("genres", games[index].genres)
+    localStorage.setItem("background_image", games[index.background_image])
+    window.location.assign(`/games/${app_id}`)
+  }
   
     const getOwnedGames = async () => {
       const user_id = localStorage.getItem("user_id");
@@ -228,17 +236,18 @@ export default function Games() {
                     <p className="card-text">Achievement 2</p>
                     <button
                       onClick={() => {
-                        handleCardFlip(index);
+                        handleCardFlip(index, game.app_id);
                       }}
                       className="btn btn-primary"
                     >
                       Flip Card
                     </button>
-                    <a
+                    <button
                       className="btn btn-primary mt-2"
-                    ><Link to={`/games/${game.app_id}`}>
+                      onClick={handleAchievementLink}
+                    >
                       View Game Achievements
-                    </Link></a>
+                    </button>
                   </div>
                 </div>
               </div>
