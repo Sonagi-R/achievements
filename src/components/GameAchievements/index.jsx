@@ -33,7 +33,6 @@ export default function GameAchievement() {
 
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
-    // console.log(allCards[1].style.transform);
       if (!allCards[index].style.transform || allCards[index].style.transform == "none") {
         allCards[index].style.transform = "rotateY(180deg)";
       } else {
