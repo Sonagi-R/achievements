@@ -34,7 +34,6 @@ export default function Achievement() {
             <img
               className="game-image"
               src={localStorage.background_image}
-              // src="https://thumbnails.pcgamingwiki.com/a/a4/The_Witcher_3_Wild_Hunt_-_cover.jpg/300px-The_Witcher_3_Wild_Hunt_-_cover.jpg"
               alt="picture of the witcher 3 game"
             />
             <h2 className="game-title mb-5">{localStorage.game_name}</h2>
@@ -44,15 +43,7 @@ export default function Achievement() {
               </p>
             </div>
           </div>
-          {/* <div className="change-game">
-            <i className="fa-solid fa-circle-left fa-2xl"></i>
-            <i className="fa-solid fa-circle-right fa-2xl ms-3"></i>
-          </div> */}
-          {/* <button className="play-on-steam" href="#">
-            Play on Steam<i className="fa-brands fa-steam fa-2xl steam ms-3" title="steam"></i>
-          </button> */}
 
-          {/* <div className="game-content"> */}
           <div className="achievement-container">
             <h2 className="achievements-header">Achievements</h2>
             <div className="achievement-overflow-scroller">
@@ -146,7 +137,7 @@ export default function Achievement() {
               </div>
             </div>
           </div>
-          {/* </div> */}
+
         </div>
       </div>
     </div>
