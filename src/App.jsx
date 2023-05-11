@@ -12,8 +12,8 @@ function App() {
       <ThemeProvider>
         <UserProvider>
           <Routes>
+          <Route index element={<Pages.landingPage />} />
             <Route path="/" element={<Layout />}>
-              <Route index element={<Pages.homePage />} />
               <Route path="/games" element={<Pages.gamesPage />} />
               <Route path="/games/:id" element={<Pages.gameAchievmentPage />} />
               <Route path="/achievements/:id" element={<Pages.achievementPage />} />
