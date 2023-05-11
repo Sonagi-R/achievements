@@ -67,6 +67,8 @@
   padding-left: 4rem;
 }
 
+
+
 .flip-card {
     position: relative;
     height: 400px;
@@ -78,17 +80,17 @@
 .flip-card-inner{
     position: relative;
     width: 100%;
-  height: 100%;
+    height: 100%;
     transition: transform 0.8s;
-  transform-style: preserve-3d;
-  transform: none;
+    transform-style: preserve-3d;
+    transform: none;
 }
 
   .flip-card-front, .flip-card-back {
     position: absolute;
     backface-visibility: hidden;
     width: 100%;
-  height: 100%;
+    height: 100%;
   }
 
   .flip-card-back{
