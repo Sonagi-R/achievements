@@ -132,9 +132,6 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
-      <footer>
-        <p>This is the Footer, whats up!</p>
-      </footer>
     </>
   );
 }
