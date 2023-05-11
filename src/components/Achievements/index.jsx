@@ -9,10 +9,23 @@ export default function Achievements() {
   // const recentGame = "final-fantasy-vii-remake"
   const user_steam_id = localStorage.getItem("steam_id");
   const user_id = localStorage.getItem("user_id");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getRecentGame();
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.user_id === "") {
+      navigate("/login");
+    }
+  }, [localStorage.user_id, navigate]);
 
   async function getRecentGame() {
-    const response = await fetch(`http://localhost:4000/steam/recent/${user_steam_id}`);
-    const recentGameid = response.response.games[0].appid;
+    const response = await fetch(`https://perfectionist-backend.onrender.com/steam/recent/${user_steam_id}`);
+    const recentGame = await response.json();
+    const recentGameid = recentGame.response.games[1].appid;
+    console.log(recentGame, recentGameid)
 
     const options = {
       method: "POST",
@@ -24,13 +37,16 @@ export default function Achievements() {
       }),
     };
 
-    const achievements = await fetch(`http://localhost:4000/achievements/`, options);
+    const achievements = await fetch(`https://perfectionist-backend.onrender.com/achievements/`, options);
     const achievementData = await achievements.json();
     setAchievementList(achievementData);
+    setLoading(true)
+    console.log(achievementData)
 
     let text;
     let simpleName;
     let simpleNameDashed;
+    let recentGameName = recentGame.response.games[1].name;
 
     text = recentGameName.split("");
     simpleName = recentGameName.split("");
@@ -59,15 +75,34 @@ export default function Achievements() {
     localStorage.setItem("background_image", background_image);
     window.location.assign(`/games/${app_id}`);
   };
-  useEffect(() => {
-    getRecentGame();
-  }, []);
 
-  useEffect(() => {
-    if (localStorage.user_id === "") {
-      navigate("/login");
-    }
-  }, [localStorage.user_id, navigate]);
+  function displayAchievements() {
+    return (
+      <>
+      <div className="panel mb-3 d-flex">
+                <div className="achievement-icon"><img src={achievementList[0].icon}/></div>
+                <div className="achievement-text">
+                <div className="achievement-name">{achievementList[0].achievement_name}</div>
+                <div className="achievement-description">{achievementList[0].description}</div>
+                </div>
+              </div>
+              <div className="panel mb-3 d-flex">
+                <div className="achievement-icon"><img src={achievementList[1].icon}/></div>
+                <div className="achievement-text">
+                <div className="achievement-name">{achievementList[1].achievement_name}</div>
+                <div className="achievement-description">{achievementList[1].description}</div>
+                </div>
+              </div>
+              <div className="panel mb-3 d-flex">
+                <div className="achievement-icon"><img src={achievementList[2].icon}/></div>
+                <div className="achievement-text">
+                <div className="achievement-name">{achievementList[2].achievement_name}</div>
+                <div className="achievement-description">{achievementList[2].description}</div>
+                </div>
+              </div>
+    </>
+    );
+  }
 
   return (
     <div className="row">
@@ -76,15 +111,6 @@ export default function Achievements() {
         <div className="achievement-categories d-flex flex-column">
           <h4 className="achievement-category achievement-category-active">
             <i className="fa-solid fa-clock mx-4"></i>Most Recent
-          </h4>
-          <h4 className="achievement-category">
-            <i className="fa-solid fa-gamepad mx-4"></i>Most Played
-          </h4>
-          <h4 className="achievement-category">
-            <i className="fa-solid fa-star mx-4"></i>Highest Score
-          </h4>
-          <h4 className="achievement-category">
-            <i className="fa-solid fa-star-half-stroke mx-4"></i>Lowest Score
           </h4>
         </div>
       </div>
@@ -138,26 +164,17 @@ export default function Achievements() {
               {/* <h2 className="card-title">Final Fantasy 7 Remake</h2> */}
               <h2>{recentGameData.name}</h2>
               <p className="card-text">{recentGameData.released}</p>
-              <button className="recent-game-button">View Game Page</button>
             </div>
           </div>
           <div className="recent-game-details">
             <div className="overflow-scroller">
-              <div className="panel mb-3">
-                <div className="achievement-icon">{achievementList[0].icon}</div>
-                <div className="achievement-name">{achievementList[0].achievement_name}</div>
-                <div className="achievement-description">{achievementList[0].description}</div>
-              </div>
-              <div className="panel mb-3">
-                <div className="achievement-icon">{achievementList[1].icon}</div>
-                <div className="achievement-name">{achievementList[1].achievement_name}</div>
-                <div className="achievement-description">{achievementList[1].description}</div>
-              </div>
-              <div className="panel mb-3">
-                <div className="achievement-icon">{achievementList[2].icon}</div>
-                <div className="achievement-name">{achievementList[2].achievement_name}</div>
-                <div className="achievement-description">{achievementList[2].description}</div>
-              </div>
+            {loading ? (
+                displayAchievements()
+              ) : (
+                <h2>
+                  <em>Loading...</em>
+                </h2>
+              )}
             </div>
           </div>
         </div>

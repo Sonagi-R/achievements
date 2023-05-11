@@ -40,7 +40,7 @@ export default function Register() {
         }),
       };
       console.log(steamId, username, password)
-      const res = await fetch("http://localhost:4000/users/register", options);
+      const res = await fetch("https://perfectionist-backend.onrender.com/users/register", options);
 
       if (res.ok) {
         console.log(`You have successfully signed up ${username}`);

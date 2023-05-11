@@ -71,14 +71,14 @@ export default function Achievement() {
       };
 
       //1. get game
-      const response = await fetch(`http://localhost:4000/games`, options);
+      const response = await fetch(`https://perfectionist-backend.onrender.com/games`, options);
       const data = await response.json();
       console.log("1", data);
       setGame(data)
       console.log("1", game);
 
       //2. get achievement
-      const achievementResponse = await fetch(`http://localhost:4000/achievements`, options);
+      const achievementResponse = await fetch(`https://perfectionist-backend.onrender.com/achievements`, options);
       const achievementData = await achievementResponse.json();
       //console.log(achievementData.error);
       if (achievementData.error == undefined) {
@@ -111,19 +111,19 @@ export default function Achievement() {
       };
 
       //1. get games
-      const response = await fetch(`http://localhost:4000/games`, options);
+      const response = await fetch(`https://perfectionist-backend.onrender.com/games`, options);
       const data = await response.json();
       console.log(data);*/
 
       console.log(user_id, user_Steam_id, app_id, game)
 
       //2. get achievements that user has attained from game
-      const getAchievements = await fetch(`http://localhost:4000/steam/achievements/?appid=${app_id}&steamid=${user_Steam_id}`);
+      const getAchievements = await fetch(`https://perfectionist-backend.onrender.com/steam/achievements/?appid=${app_id}&steamid=${user_Steam_id}`);
       const achievementsData = await getAchievements.json();
       console.log(achievementsData)
 
       //2.1 get additional info for that achievement (but do not know if user achieved it)
-      const achievementInfo = await fetch(`http://localhost:4000/steam/achievementsinfo/${app_id}`);
+      const achievementInfo = await fetch(`https://perfectionist-backend.onrender.com/steam/achievementsinfo/${app_id}`);
       const achievementInfoData = await achievementInfo.json();
       console.log(achievementInfoData)
 
@@ -153,7 +153,7 @@ export default function Achievement() {
             }),
           };
 
-          const stashAchievements = await fetch(`http://localhost:4000/achievements/new`, options)
+          const stashAchievements = await fetch(`https://perfectionist-backend.onrender.com/achievements/new`, options)
           const storedAchievements = await stashAchievements.json();
           console.log(storedAchievements)
           currency += 200;
@@ -169,7 +169,7 @@ export default function Achievement() {
             }),
           };
 
-          const updateCurrency = await fetch(`http://localhost:4000/users/updatecurrency`, options)
+          const updateCurrency = await fetch(`https://perfectionist-backend.onrender.com/users/updatecurrency`, options)
           const currencyData = await updateCurrency.json();
           console.log(currencyData)
         }

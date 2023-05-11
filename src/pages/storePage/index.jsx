@@ -10,7 +10,7 @@ export default function storePage() {
     }, []);
 
     const fetchItems = async () => {
-        const response = await fetch(`http://localhost:4000/items`, {credentials: "include"});
+        const response = await fetch(`https://perfectionist-backend.onrender.com/items`, {credentials: "include"});
         const data = await response.json();
         console.log(data);
 
@@ -24,7 +24,7 @@ export default function storePage() {
             credentials: "include"
           };
 
-        const response = await fetch(`http://localhost:4000/items/${itemId}`, options);
+        const response = await fetch(`https://perfectionist-backend.onrender.com/items/${itemId}`, options);
         const data = await response.json();
         console.log(data);
     }

@@ -71,7 +71,7 @@ export default function Games() {
   const getOwnedGames = async () => {
     const user_id = localStorage.getItem("user_id");
     const user_Steam_id = localStorage.getItem("steam_id");
-    const response = await fetch(`http://localhost:4000/games/${user_id}`);
+    const response = await fetch(`https://perfectionist-backend.onrender.com/games/${user_id}`);
     const data = await response.json();
     console.log(data);
     if (!("error" in data)) {
@@ -89,7 +89,7 @@ export default function Games() {
     const user_Steam_id = localStorage.getItem("steam_id");
     // console.log(user_id, user_Steam_id)
     //1. get games
-    const fetchGames = await fetch(`http://localhost:4000/steam/games/${user_Steam_id}`);
+    const fetchGames = await fetch(`https://perfectionist-backend.onrender.com/steam/games/${user_Steam_id}`);
     const gameData = await fetchGames.json();
     // console.log(gameData.response.games);
     //2. store games
@@ -142,7 +142,7 @@ export default function Games() {
         };
 
         try {
-          const stashGames = await fetch(`http://localhost:4000/games/new`, options);
+          const stashGames = await fetch(`https://perfectionist-backend.onrender.com/games/new`, options);
           const storedGames = await stashGames.json();
 
           //console.log(storedGames, game.name, index)
@@ -223,8 +223,7 @@ export default function Games() {
                 </div>
                 <div className="card flip-card-back">
                   <h3 className="card-header">{game.game_name}</h3>
-                  <p className="card-text">Achievement 1</p>
-                  <p className="card-text">Achievement 2</p>
+                  <p className="card-text">Playtime: {game.playtime} minutes</p>
                   <button
                     onClick={() => {
                       handleCardFlip(index);
