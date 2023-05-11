@@ -72,7 +72,7 @@
     height: 400px;
     width: 300px;
     background-color: transparent;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    perspective: 1000px;
   }
 
 .flip-card-inner{
@@ -83,10 +83,6 @@
   transform-style: preserve-3d;
   transform: none;
 }
-
-/* .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  } */
 
   .flip-card-front, .flip-card-back {
     position: absolute;
