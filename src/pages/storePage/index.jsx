@@ -3,7 +3,6 @@ import React from 'react'
 import './index.css'
 
 export default function storePage() {
-
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -17,6 +16,19 @@ export default function storePage() {
 
         setItems(data);
     }
+
+    const handleBuy = async (itemId) => {
+        const options = {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include"
+          };
+
+        const response = await fetch(`http://localhost:4000/items/${itemId}`, options);
+        const data = await response.json();
+        console.log(data);
+    }
+
   return (
     <div>
         <h1>Store Page</h1>
@@ -29,7 +41,7 @@ export default function storePage() {
                 <p className="card-text">
                     Price: {item.price}
                 </p>
-                <button>
+                <button onClick={() => {handleBuy(item.item_id)}}>
                     Buy Now
                 </button>
             </div>
