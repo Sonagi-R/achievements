@@ -165,19 +165,3 @@ export default function Achievements() {
     </div>
   );
 }
-
-/*
-return <div>{achievementList.map((achievement) => (
-          <div className="achievement">
-          <img
-            className="d-inline-block"
-            src={achievement.icon}
-            alt="achievement icon"
-          />
-          <article>
-            <h3 className="d-inline-block">{achievement.achievement_name}</h3>
-            <p>{achievement.description}</p>
-          </article>
-        </div>
-        ))}</div>
-*/
