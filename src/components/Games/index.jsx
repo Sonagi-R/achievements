@@ -159,15 +159,14 @@ export default function Games() {
   return (
     <>
       <h1 className="text-center">Dashboard</h1>
-      <h2 className="text-start games-container-title">Popular Games</h2>
       {/* might move search bar above first category to avoid it looking to long in current position */}
       <div className="position-relative search-container">
-        <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i>
+        {/* <i className="fa-solid fa-magnifying-glass position-absolute start-0 mt-3 ms-4"></i> */}
         <input placeholder="Search For a Game" onChange={handleSearch} className="games-search color-black" type="text" />
         <button onClick={syncGames}>Sync Games</button>
       </div>
       <div className="row games-main">
-        <div className="col-2 text-start">
+        {/* <div className="col-2 text-start">
           <div className="mb-5 mt-4">
             <h2 className="category-header">New Releases</h2>
             <div className="game-category ps-4">Action</div>
@@ -186,20 +185,11 @@ export default function Games() {
             <div className="game-category ps-4">Shooter</div>
             <div className="game-category ps-4">RPG</div>
           </div>
-          <div>
-            <h2 className="category-header">Categories</h2>
-            <div className="game-category ps-4">Action</div>
-            <div className="game-category ps-4">Adventure</div>
-            <div className="game-category ps-4">Platform</div>
-            <div className="game-category ps-4">Puzzle</div>
-            <div className="game-category ps-4">Shooter</div>
-            <div className="game-category ps-4">RPG</div>
-          </div>
-        </div>
+        </div> */}
         <div className="col-10">
           <div className="games-container my-5">
           <div className="games-container my-5">
-            {games.map((game, index) => (
+            {filteredGames.map((game, index) => (
               <div className="flip-card">
                 <div className="flip-card-inner">
                   <div className="card p-0 game-card flip-card-front" style={{ width: "18rem" }}>
