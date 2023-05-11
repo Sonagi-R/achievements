@@ -80,6 +80,19 @@
 .game-description{
     width: 100%;
     height: 300px;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+
+.description-text {
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.description-text::-webkit-scrollbar {
+    display: none;
 }
 
 .achievement-container{

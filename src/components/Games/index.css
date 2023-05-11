@@ -4,7 +4,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    width: 70vw;
+    width: 100vw;
+    justify-content: center;
+    padding-left: 4vw;
+    padding-right: 5vw;
 }
 
 .game{
@@ -98,4 +101,6 @@
     border-radius: 10px;
     border: 2px solid rgba(2, 133, 159, 0.57);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background-color: #070d17;
+    color: white; 
   }

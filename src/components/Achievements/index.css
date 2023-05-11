@@ -41,6 +41,13 @@
     /* background: linear-gradient(135deg,rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)); */
 }
 
+.panel img {
+    height: 70px;
+    margin-right: 100px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
 .challenges{
     background-color: rgba(228, 224, 224, 0.164);
 }
@@ -104,7 +111,7 @@
 }
 
 .recent-game-image{
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/216/962/346/final-fantasy-vii-final-fantasy-vii-remake-video-games-video-game-art-digital-art-hd-wallpaper-preview.jpg');
+    background-image: url('https://assets.xboxservices.com/assets/e0/94/e094ff7a-f3a2-45bd-9efa-ab14e94e5169.jpg?n=75295231_GLP-Page-Hero-1084_1920x1080.jpg');
     height: 275px;
     width: 900px;
     background-size: cover;

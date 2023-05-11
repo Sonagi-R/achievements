@@ -1,4 +1,6 @@
-
+#login-page {
+    height: 80vh;
+}
 
 form{
     display: flex;

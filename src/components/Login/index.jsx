@@ -25,7 +25,7 @@ export default function Login() {
           password: password
         }),
       };
-      const res = await fetch("http://localhost:4000/users/login", options);
+      const res = await fetch("https://perfectionist-backend.onrender.com/users/login", options);
       const data = await res.json();
       setUsername(data.username);
       options = {
@@ -34,7 +34,7 @@ export default function Login() {
         //headers: { "Accept": "application/json" },
         credentials: "include"
       };
-      const user = await fetch("http://localhost:4000/users/current", options);
+      const user = await fetch("https://perfectionist-backend.onrender.com/users/current", options);
       const userdata = await user.json();
       if (user.ok) {
         console.log(userdata)
@@ -64,7 +64,7 @@ export default function Login() {
     console.log(userId, userSteamId)
     let options;
     //1. get games
-    const games = await fetch(`http://localhost:4000/steam/games/${userSteamId}`);
+    const games = await fetch(`https://perfectionist-backend.onrender.com/steam/games/${userSteamId}`);
     const gamesData = await games.json();
     console.log(gamesData);
     gamesData.response.games.map(async (gameObject) => {
@@ -82,7 +82,7 @@ export default function Login() {
           user_id: userId
         }),
       };
-      const stashGames = await fetch(`http://localhost:4000/games/new`, options);
+      const stashGames = await fetch(`https://perfectionist-backend.onrender.com/games/new`, options);
       const storedGames = await stashGames.json();
       console.log(storedGames)
       //3. get achievements
@@ -90,7 +90,7 @@ export default function Login() {
         method: "GET",
         credentials: "include"
       };
-      const getAchievements = await fetch(`http://localhost:4000/steam/achievements/?appid=${gameObject.appid}&steamid=${userSteamId}`);
+      const getAchievements = await fetch(`https://perfectionist-backend.onrender.com/steam/achievements/?appid=${gameObject.appid}&steamid=${userSteamId}`);
       const achievementsData = await getAchievements.json();
       console.log(achievementsData)
       if ('achievements' in achievementsData.playerstats) {
@@ -109,7 +109,7 @@ export default function Login() {
               user_id: userId
             }),
           };
-          const stashAchievements = await fetch(`http://localhost:4000/achievements/new`, options)
+          const stashAchievements = await fetch(`https://perfectionist-backend.onrender.com/achievements/new`, options)
           const storedAchievements = await stashAchievements.json();
           console.log(storedAchievements)
         })
@@ -130,14 +130,14 @@ export default function Login() {
         user_id: userSteamId
       }),
     };
-    const stashGames = await fetch(`http://localhost:4000/games/${userSteamId}`);*/
-    /*const achievements = await fetch(`http://localhost:4000/steam/achievements/${userSteamId}`);
+    const stashGames = await fetch(`https://perfectionist-backend.onrender.com/games/${userSteamId}`);*/
+    /*const achievements = await fetch(`https://perfectionist-backend.onrender.com/steam/achievements/${userSteamId}`);
     const achievementsData = await achievements.json();
     console.log(achievementsData);*/
   }
   return (
     <div className="d-flex mb-5 flex-column" id="login-page">
-      <h1 className="logo-title mb-5">Achievements</h1>
+      <h1 className="logo-title mb-5">Perfectionist</h1>
       <h2 className="mb-5">Login</h2>
       <form className="d-flex justify-content flex-column">
         <input onChange={usernameHandler} type="text" placeholder="Username" className="mt-2 form-entry"></input>

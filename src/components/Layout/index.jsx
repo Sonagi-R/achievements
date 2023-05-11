@@ -33,7 +33,7 @@ export default function Layout() {
 
 
   const handleLogout = async() => {
-    await fetch("http://localhost:4000/users/logout", {credentials: "include"})
+    await fetch("https://perfectionist-backend.onrender.com/users/logout", {credentials: "include"})
     localStorage.user_id = ""
     localStorage.steam_id = ""
     localStorage.username = ""
@@ -46,7 +46,7 @@ export default function Layout() {
       headers: { "Content-Type": "application/json" },
       credentials: "include"
     };
-    const response = await fetch("http://localhost:4000/users/current", options)
+    const response = await fetch("https://perfectionist-backend.onrender.com/users/current", options)
     const data = await response.json();
     setCurrency(data.currency);
     console.log(data)
@@ -56,13 +56,13 @@ export default function Layout() {
     <>
       <nav className="d-flex justify-content-between align-items-start">
         <h2 className="nav-logo"><img src={logo}/></h2>
-        {currentPage == "/achievements" ? (
+        {currentPage == "/games" ? (
           <>
             <div className="nav-links">
-              <NavLink to="/games" className="nav-component">
+              <NavLink to="/achievements" className="nav-component">
                 <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
               </NavLink>
-              <NavLink to="/achievements" className="nav-component active-nav">
+              <NavLink to="/games" className="nav-component active-nav">
                 <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
               </NavLink>
               <NavLink to="/store" className="nav-component">
@@ -78,20 +78,21 @@ export default function Layout() {
         ) : (
           ""
         )}
-         {currentPage == "/achievements/2" ? (
+         {currentPage == `/games/${localStorage.app_id}` ? (
           <>
             <div className="nav-links">
               <NavLink to="/games" className="nav-component">
-                <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
+                <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
               </NavLink>
               <NavLink to="/achievements" className="nav-component">
-                <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
+                <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
               </NavLink>
               <NavLink to="/store" className="nav-component">
                 <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
               </NavLink>
             </div>
             <div className="nav-right d-flex gap-3">
+              <h2>{currency}¢</h2>
               <h2>{localStorage.username}</h2>
               <button onClick={handleLogout} id="logout">Logout</button>
             </div>
@@ -100,13 +101,13 @@ export default function Layout() {
           ""
         )}
 
-        {currentPage == "/games" ? (
+        {currentPage == "/achievements" ? (
           <>
             <div className="nav-links">
-            <NavLink to="/achievements" className="nav-component">
+            <NavLink to="/games" className="nav-component">
               <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
             </NavLink>
-            <NavLink to="/games" className="nav-component active-nav">
+            <NavLink to="/achievements" className="nav-component active-nav">
               <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
             </NavLink>
             <NavLink to="/store" className="nav-component">
@@ -125,13 +126,13 @@ export default function Layout() {
         {currentPage == "/store" ? (
           <>
             <div className="nav-links">
-            <NavLink to="/achievements" className="nav-component">
+            <NavLink to="/games" className="nav-component">
               <i className="fa-brands fa-steam fa-2xl steam" title="steam"></i>
             </NavLink>
             <NavLink to="/store" className="nav-component active-nav">
               <i className="fa-solid fa-cart-shopping fa-2xl cart" title="cart"></i>
             </NavLink>
-            <NavLink to="/games" className="nav-component">
+            <NavLink to="/achievements" className="nav-component">
               <i className="fa-solid fa-trophy fa-2xl trophy" title="trophy"></i>
               </NavLink>
             </div>
