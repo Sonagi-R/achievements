@@ -1,0 +1,40 @@
+#login-page {
+    height: 80vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.form-entry{
+    display: block;
+  margin-bottom: 1rem;
+  width: 480px;
+  padding-left: 20px;
+  height: 6dvh;
+  border-radius: 99999px;
+  background-color: #E4E4E4;
+  color: black;
+}
+
+.form-entry::placeholder{
+    color: black;
+}
+
+.form-submit{
+    background-color: #449495;
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    #root{
+        max-width: 100%;
+    }
+
+    .form-entry{
+        width: 100%;
+    }
+}

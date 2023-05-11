@@ -1,0 +1,151 @@
+
+.primary-column{
+    border-right: 2px solid rgba(255,255,255,0.2);
+    height: 80vh;
+    padding: 0;
+}
+
+.achievement-categories{
+    text-align: start;
+}
+
+.achievement-category{
+    height: 80px;
+    line-height: 70px;
+    width: 100%;
+}
+
+.achievement-category-active{
+    background-color: rgb(3, 1, 20);
+    background: linear-gradient(90deg, rgb(3, 1, 20), rgba(255, 255, 255, 0.089));
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.secondary-column{
+    margin-left: 8rem;
+    margin-right: 1rem;
+}
+
+.panel{
+    height: 75px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(3, 1, 20);
+    background-color: rgba(228, 224, 224, 0.034);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* background: linear-gradient(135deg,rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)); */
+}
+
+.panel img {
+    height: 70px;
+    margin-right: 100px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.challenges{
+    background-color: rgba(228, 224, 224, 0.164);
+}
+
+.challenges-text{
+    font-size: 1rem;
+    width: 60%;
+    text-align: start;
+}
+
+.challenges-score{
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.challenge-complete{
+    background-color: rgba(5, 202, 81, 0.5);
+}
+
+.logo-container{
+    height: 200px;
+    width: 200px;
+    align-self: center;
+    border: 2px solid white;
+    position: relative;
+    border-radius: 50%;
+    line-height: 280px;
+    margin-bottom: 50px;
+}
+
+.metric-container{
+    height: 100px;
+    font-size: 0.8rem;
+    width: 225px;
+    color: white;
+    cursor: pointer;
+    background-color: rgba(3, 1, 20, 0.089);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* background: linear-gradient(135deg,rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0)); */
+}
+
+.recent-game{
+    width: 90%;
+    height: 550px;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+    /* background-color: rgb(3, 1, 20); */
+    background: linear-gradient(90deg, rgb(3, 1, 20), rgba(255, 255, 255, 0.089));
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.recent-game-image-container{
+    padding: 20px;
+    padding-top: 25px;
+}
+
+.recent-game-image{
+    background-image: url('https://assets.xboxservices.com/assets/e0/94/e094ff7a-f3a2-45bd-9efa-ab14e94e5169.jpg?n=75295231_GLP-Page-Hero-1084_1920x1080.jpg');
+    height: 275px;
+    width: 900px;
+    background-size: cover;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.recent-game-button{
+    width: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.452);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    color: 2px solid rgba(2, 133, 159, 0.57);
+    background-color: rgba(3, 1, 20, 0.514);
+}
+
+
+.recent-game-details{
+    border-top: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 200px;
+    overflow-y: scroll;
+    overflow: hidden;
+}
+
+.overflow-scroller{
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+
+.overflow-scroller::-webkit-scrollbar {
+    display: none;
+}
