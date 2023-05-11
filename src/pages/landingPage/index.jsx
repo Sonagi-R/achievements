@@ -2,6 +2,7 @@ import React from 'react'
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import './index.css'
+import { NavLink } from 'react-router-dom';
 
 export default function landingPage() {
 
@@ -13,6 +14,9 @@ export default function landingPage() {
                     <h1>Welcome</h1>
                     <i className="fa-solid fa-solid-land fa-trophy trophy" title='trophy'></i>
                     <p className='landing-desc'>It's time to achieve perfection.</p>
+                    <NavLink to="/games" className="">
+                        <h4>Game on</h4>
+                    </NavLink>
                 </div>
             </div>
             <div className='img-2'>
