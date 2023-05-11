@@ -60,11 +60,11 @@ export default function Games() {
       }
   };
 
-  const handleAchievementLink = (index, app_id) => {
-    localStorage.setItem("game_description", games[index].game_description)
-    localStorage.setItem("game_name", games[index].game_name)
-    localStorage.setItem("genres", games[index].genres)
-    localStorage.setItem("background_image", games[index.background_image])
+  const handleAchievementLink = ( app_id, game_description, game_name, genres, background_image) => {
+    localStorage.setItem("game_description", game_description)
+    localStorage.setItem("game_name", game_name)
+    localStorage.setItem("genres", genres)
+    localStorage.setItem("background_image", background_image)
     window.location.assign(`/games/${app_id}`)
   }
   
@@ -236,7 +236,7 @@ export default function Games() {
                     <p className="card-text">Achievement 2</p>
                     <button
                       onClick={() => {
-                        handleCardFlip(index, game.app_id);
+                        handleCardFlip( game.app_id,game.description, game.game_name, game.genres, game.background_image);
                       }}
                       className="btn btn-primary"
                     >
