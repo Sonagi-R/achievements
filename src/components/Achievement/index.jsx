@@ -33,7 +33,8 @@ export default function Achievement() {
           <div className="game-content">
             <img
               className="game-image"
-              src="https://thumbnails.pcgamingwiki.com/a/a4/The_Witcher_3_Wild_Hunt_-_cover.jpg/300px-The_Witcher_3_Wild_Hunt_-_cover.jpg"
+              src={localStorage.background_image}
+              // src="https://thumbnails.pcgamingwiki.com/a/a4/The_Witcher_3_Wild_Hunt_-_cover.jpg/300px-The_Witcher_3_Wild_Hunt_-_cover.jpg"
               alt="picture of the witcher 3 game"
             />
             <h2 className="game-title mb-5">{localStorage.game_name}</h2>
@@ -58,8 +59,7 @@ export default function Achievement() {
               <div className="achievement">
                 <img
                   className="d-inline-block"
-                  src={localStorage.background_image}
-                  // src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/292030/6078587189483353f06f48d0eefdaaa0791e9e13.jpg"
+                  src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/292030/6078587189483353f06f48d0eefdaaa0791e9e13.jpg"
                   alt="achievement icon"
                 />
                 <article>
