@@ -1,7 +1,7 @@
 import React from 'react'
 import { GameAchievement } from '../../components'
 
-export default function gameAchievmentPage() {
+export default function gameAchievmentsPage() {
     return (
       <>
         <GameAchievement />
