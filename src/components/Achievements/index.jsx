@@ -1,9 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Achievements() {
+  const [recentGameData, setRecentGameData] = useState({})
   const navigate = useNavigate();
+  // const recentGame = "final-fantasy-vii-remake"
+  const apiKey = import.meta.env.VITE_API_KEY
+
+  async function getRecentGame() {
+    const user_Steam_id = localStorage.getItem("steam_id");
+    const response = await fetch(`http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${user_Steam_id}&format=json`)
+    const recentGameName = response.response.ganes[0].name
+
+    let text;
+    let simpleName;
+    let simpleNameDashed;
+
+      text = recentGameName.split("");
+      simpleName = recentGameName.split("");
+      simpleNameDashed = recentGameName.split("");
+        simpleName = text.replace("™", "");
+        simpleName = simpleName.replace(":", "");
+        simpleName = simpleName.replace("®", "");
+        simpleName = simpleName.replace("©", "");
+        simpleName = simpleName.replace("®", "");
+        simpleName = simpleName.replace("'", "");
+        simpleNameDashed = simpleName.replace(" ", "-");
+      simpleName = simpleName.join("");
+      simpleNameDashed = simpleNameDashed.join("");
+
+    const res = await fetch(`https://api.rawg.io/api/games/${simpleNameDashed}?key=db170b4f923142118fbbdc3e17c16422&platforms=1`)
+    const data = await res.json();
+    console.log(data);
+    setRecentGameData(data)
+    console.log(recentGameData);
+  }
+
+  const handleAchievementLink = (app_id, game_description, game_name, genres, background_image) => {
+    localStorage.setItem("game_description", game_description);
+    localStorage.setItem("game_name", game_name);
+    localStorage.setItem("genres", genres);
+    localStorage.setItem("background_image", background_image);
+    window.location.assign(`/games/${app_id}`);
+  };
+  useEffect(() => {
+    getRecentGame();
+  }, []);
+
 
   useEffect(() => {
     if (localStorage.user_id === "") {
@@ -17,16 +61,16 @@ export default function Achievements() {
         <h2 className="pb-3">Achievements</h2>
         <div className="achievement-categories d-flex flex-column">
           <h4 className="achievement-category achievement-category-active">
-            <i class="fa-solid fa-clock mx-4"></i>Most Recent
+            <i className="fa-solid fa-clock mx-4"></i>Most Recent
           </h4>
           <h4 className="achievement-category">
-            <i class="fa-solid fa-gamepad mx-4"></i>Most Played
+            <i className="fa-solid fa-gamepad mx-4"></i>Most Played
           </h4>
           <h4 className="achievement-category">
-            <i class="fa-solid fa-star mx-4"></i>Highest Score
+            <i className="fa-solid fa-star mx-4"></i>Highest Score
           </h4>
           <h4 className="achievement-category">
-            <i class="fa-solid fa-star-half-stroke mx-4"></i>Lowest Score
+            <i className="fa-solid fa-star-half-stroke mx-4"></i>Lowest Score
           </h4>
         </div>
       </div>
@@ -35,7 +79,7 @@ export default function Achievements() {
           <i className="fa-brands fa-fantasy-flight-games fa-8x"></i>
           </div>
         <div className="panel d-flex ps-5 align-items-center justify-content-around">
-          <i class="fa-solid fa-fire fa-2x"></i>
+          <i className="fa-solid fa-fire fa-2x"></i>
           <h4>15 Days</h4>
         </div>
         <div className="d-flex gap-5 justify-content-around">
@@ -44,13 +88,13 @@ export default function Achievements() {
         </div>
 <h5>Bounties</h5>
         <div className="challenges panel d-flex align-items-center">
-        <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">500</h4>
+        <i className="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">Get 100% achievements in a game!</h4><h4 className="challenges-score">500</h4>
         </div>
         <div className="challenges panel d-flex align-items-center">
-        <i class="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">SpeedRun Sonic Generations!</h4><h4 className="challenges-score">350</h4>
+        <i className="fa-regular fa-star-half-stroke me-3"></i><h4 className="challenges-text">SpeedRun Sonic Generations!</h4><h4 className="challenges-score">350</h4>
         </div>
         <div className="challenges panel d-flex align-items-center challenge-complete">
-        <i class="fa-solid fa-star me-3"></i><h4 className="challenges-text">Play 1 hour of a game you haven't played!</h4><h4 className="challenges-score">150</h4>
+        <i className="fa-solid fa-star me-3"></i><h4 className="challenges-text">Play 1 hour of a game you haven't played!</h4><h4 className="challenges-score">150</h4>
         </div>
       </div>
       <div className="col-7 d-flex flex-column align-items-center">
@@ -71,8 +115,9 @@ export default function Achievements() {
         <div className="recent-game row d-flex flex-column align-items-center gap-2">
           <div className="recent-game-image-container">
             <div className="card recent-game-image d-flex flex-column align-items-center">
-              <h2 className="card-title">Final Fantasy 7 Remake</h2>
-              <p className="card-text">07/05/2023</p>
+              {/* <h2 className="card-title">Final Fantasy 7 Remake</h2> */}
+              <h2>{ recentGameData.name}</h2>
+              <p className="card-text">{recentGameData.released}</p>
               <button className="recent-game-button">View Game Page</button>
             </div>
           </div>
