@@ -50,6 +50,7 @@ export default function Games() {
   const handleSearch = (e) => {
     setFilteredGames(games.filter(game => game.name.toLowerCase().includes(e.target.value.toLowerCase())))
   }
+  
   const handleCardFlip = (index) => {
     const allCards = document.querySelectorAll(".flip-card-inner");
     // console.log(allCards[1].style.transform);
@@ -58,7 +59,8 @@ export default function Games() {
       } else {
         allCards[index].style.transform = "none";
       }
-    };
+  };
+  
     const getOwnedGames = async () => {
       const user_id = localStorage.getItem("user_id");
       const user_Steam_id = localStorage.getItem("steam_id");
